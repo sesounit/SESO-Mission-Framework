@@ -1,0 +1,8 @@
+class Sentences
+{
+};
+
+class Arguments{};
+class Special{};
+startWithVocal[] = {hour};
+startWithConsonant[] = {europe, university};

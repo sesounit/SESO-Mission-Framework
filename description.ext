@@ -1,0 +1,126 @@
+#include "conv\cfg\defines.hpp"
+#include "conv\cfg\dialogs.hpp"
+#include "missionConversations.hpp"
+#include "sentences.bikb"
+// Custom Loading Texts
+#include "intel\loading_Tips.hpp"
+
+// Mission Header
+author="Dildo Sagbag";
+briefingName = "Operation Rosso";
+onLoadName="Operation Rosso";
+onLoadMission= "Rescue Wehrmacht soldiers.";
+overviewPicture="thumbnail2.jpg";
+loadScreen="thumbnail2.jpg";
+class Header{gameType=Zeus;};
+
+// Mission Settings
+debriefing = 1;
+allowFunctionsLog=1;
+zeusCompositionScriptLevel=2;
+disabledAI=1;
+saving=0;
+disableChannels[] = { 1, 2, 3, 4 };
+allowProfileGlasses = 0;
+
+// Debug Console
+enableDebugConsole = 1;
+enableTargetDebug = 1;
+
+// Respawn Settings
+respawn = "BASE";
+respawnDelay = 5;
+respawnOnStart = -1;
+respawnVehicleDelay = 15;
+respawnTemplates[] = {"MenuPosition", "Tickets", "Group"};
+respawnTemplatesVirtual[] = {};
+
+// Garbage Collection
+corpseManagerMode = 3;
+minPlayerDistance = 300;
+wreckManagerMode = 3;
+
+class CfgNotifications {
+	class MedicalNotif
+	{
+		title = "MEDICAL TREATMENT";
+		iconPicture = "z\ace\addons\medical_gui\ui\cross.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		description = "%1 is treating your %2";
+		duration = 8;
+	};
+
+	class SetupOverNotif
+	{
+		title = "SETUP IS OVER";
+		iconPicture = "a3\ui_f\data\igui\rsctitles\mpprogress\timer_ca.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		description = "Setup timer has run out. Mission starts now.";
+		duration = 10;
+	};
+
+	class SetupCanceledNotif
+	{
+		title = "SETUP IS CANCELED";
+		iconPicture = "a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_exit_cross_ca.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		description = "Setup timer has been canceled manually by %1";
+		duration = 10;
+	};
+};
+
+// Debriefing Kill Screen
+class CfgDebriefingSections {
+	#if __has_include("\z\ace\addons\killtracker\killtracker.inc")
+		#include "\z\ace\addons\killtracker\killtracker.inc"
+	#endif
+};
+
+// HALs Store
+//#define HALs_DEF_INIT
+//	#include "HALs\Addons\main\config.hpp"
+//#undef HALs_DEF_INIT
+
+class CfgFunctions
+{
+	// Conversation System
+	#include "conv\cfg\functions.hpp"
+	// SESO Mission Scripts
+	#include "functions\cfgFunctions.hpp"
+	//HALs Store
+//	#define HALs_DEF_FUNCTIONS
+//		#include "HALs\Addons\main\config.hpp"
+//	#undef HALs_DEF_FUNCTIONS
+};
+
+class CfgSounds
+{
+	sounds[] =  {radioclick};
+
+	class radioclick
+	{
+		name = "radioclick";
+		sound[] = {\snd\radioclick.ogg, 1, 1.0};
+		titles[] = {0, ""};
+	};
+};
+
+// Custom SESO Fortify Preset
+class ACEX_Fortify_Presets {
+    class SESO_preset {
+        displayName = "SESO Preset";
+        objects[] = {
+			{"Land_Fort_Watchtower_EP1",50},
+			{"Land_fortified_nest_big_EP1",100},
+			{"Land_fortified_nest_small_EP1",25},
+			{"Land_BagFence_Round_F",5},
+			{"Land_BagFence_Short_F",5},
+			{"Land_BagFence_Long_F",10},
+			{"Land_Razorwire_F",10},
+			{"Land_CzechHedgehog_01_old_F",5}
+		};
+    };
+};
