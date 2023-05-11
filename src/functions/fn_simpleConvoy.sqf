@@ -1,5 +1,5 @@
 /*
-* Author: Dildo Sagbag
+* Author: Tova, modified by Dildo Sagbag
 *
 * Description:
 * Improved version of TOV_fnc_simpleConvoy. Creates a convoy based off a groupf of vehicles. Once group is deleted, leader is out of the vehicle, or there are no waypoints, then the convoy is restored to normal settings.
