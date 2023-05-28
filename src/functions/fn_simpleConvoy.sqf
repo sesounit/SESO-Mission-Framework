@@ -55,7 +55,7 @@ while {sleep 5; (!isNull _convoyGroup) or (vehicle (leader _convoyGroup) != (lea
 		if ((speed vehicle _x < 5) && (_pushThrough || (behaviour _x != "COMBAT"))) then {
 			vehicle _x doFollow (leader _convoyGroup);
 		};	
-	}forEach (units convoyGroup)-(crew (vehicle (leader _convoyGroup)));
+	}forEach (units _convoyGroup)-(crew (vehicle (leader _convoyGroup)));
 
 	{
 		_x setConvoySeparation _convoySeparation;
