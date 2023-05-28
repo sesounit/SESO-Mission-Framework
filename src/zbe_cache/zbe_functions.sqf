@@ -49,7 +49,7 @@ zbe_closestUnit = {
 
 zbe_setPosLight = {
 	{
-		if ((count (waypoints (group _x)) == currentWaypoint (group _x))) exitWith {};
+		//if ((count (waypoints (group _x)) == currentWaypoint (group _x))) exitWith {};
 		_testpos = (formationPosition _x);
 		if (!(isNil "_testpos") && (count _testpos > 0)) then {
 			if (!(isPlayer _x) && (vehicle _x == _x)) then {
@@ -61,7 +61,7 @@ zbe_setPosLight = {
 
 zbe_setPosFull = {
 	{
-		if ((count (waypoints (group _x)) == currentWaypoint (group _x))) exitWith {};
+		//if ((count (waypoints (group _x)) == currentWaypoint (group _x))) exitWith {};
 		_testpos = (formationPosition _x);
 		if (!(isNil "_testpos") && (count _testpos > 0)) then {
 			if (!(isPlayer _x) && (vehicle _x == _x)) then {
