@@ -2,7 +2,7 @@
 * Author: Tova, modified by Dildo Sagbag
 *
 * Description:
-* Improved version of TOV_fnc_simpleConvoy. Creates a convoy based off a groupf of vehicles. Once group is deleted, leader is out of the vehicle, or there are no waypoints, then the convoy is restored to normal settings.
+* Improved version of TOV_fnc_simpleConvoy. Creates a convoy based off a group of vehicles. Once group is deleted, leader is out of the vehicle, or there are no waypoints, then the convoy is restored to normal settings.
 * https://forums.bohemia.net/forums/topic/226608-simple-convoy-script-release/
 *
 * Arguments:
@@ -23,6 +23,8 @@
 */
 
 params ["_convoyGroup",["_convoySpeed",50],["_convoySeparation",50],["_pushThrough", false]];
+
+if !(isServer) exitWith {};
 
 private _convoyVehicles = vehicles select {group _x == _convoyGroup};
 _convoyVehicles = _convoyVehicles - allPlayers;
