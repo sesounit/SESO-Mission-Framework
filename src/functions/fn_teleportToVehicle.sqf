@@ -36,10 +36,10 @@ if ((_teleportAllPlayers == true) or (_teleportAllZeus == true)) exitWith {
 private _targetDisplayName = str _target;
 switch (_targetDisplayName) do
 {
-	case "respawn_bus": {_targetDisplayName = "Undercover Bus"};
-	case "respawn_truck": { _targetDisplayName = "Ural Transport"};
-	case "respawn_boat": { _targetDisplayName = "Zodiac Boat"};
-	case "respawn_heli": { _targetDisplayName = "UH-1H Huey"};
+	case "respawn_bus": {_targetDisplayName = "Bus MHQ"};
+	case "respawn_truck": { _targetDisplayName = "Truck MHQ"};
+	case "respawn_boat": { _targetDisplayName = "Boat MHQ"};
+	case "respawn_heli": { _targetDisplayName = "Helicopter MHQ"};
 	case "drop_plane": { _targetDisplayName = "Drop Plane"};
 	default {_targetDisplayName = [configFile >> "CfgVehicles" >> typeOf vehicle _target] call BIS_fnc_displayName};
 };

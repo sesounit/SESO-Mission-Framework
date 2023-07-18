@@ -13,8 +13,8 @@
 * None
 *
 * Examples:
-* [bob, ["BUILDING"], 500] call SESO_fnc_hideMapObjects.sqf
-* [[100,100,0], ["TREE","SMALL TREE","BUSH"], 500] call SESO_fnc_hideMapObjects.sqf
+* [bob, ["BUILDING"], 500] call SESO_fnc_hideMapObjects
+* [[100,100,0], ["TREE","SMALL TREE","BUSH"], 500] call SESO_fnc_hideMapObjects
 *
 * Public: Yes
 */
@@ -27,6 +27,13 @@
 #define CATEGORY_COMP				[MAP_TYPES_BUILDING,MAP_TYPES_WALL,MAP_TYPES_VEGETATION,MAP_TYPES_MISC]
 
 params ["_subject","_objectTypes","_radius"];
+
+//case _objectTypes do {
+//	case "MAP_TYPES_BUILDING": {_objectTypes = MAP_TYPES_BUILDING};
+//	case "MAP_TYPES_WALL": {_objectTypes = MAP_TYPES_WALL};
+//	case "MAP_TYPES_VEGETATION": {_objectTypes = MAP_TYPES_VEGETATION};
+//	case "MAP_TYPES_MISC": {_objectTypes = MAP_TYPES_MISC};
+//};
 
 private _found = (nearestTerrainObjects [_subject,_objectTypes,_radius,false,true]) + (nearestObjects [_subject,_objectTypes,_radius,true]);
 

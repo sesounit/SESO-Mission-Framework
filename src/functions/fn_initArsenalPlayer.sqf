@@ -15,7 +15,7 @@
 */
 
 #define ARSENAL_MEDICAL ["ACE_elasticBandage","ACE_packingBandage","ACE_bodyBag","ACE_epinephrine","ACE_tourniquet","ACE_bloodIV","ACE_adenosine","ACE_morphine","ACE_bloodIV_500","ACE_bloodIV_250","ACE_splint","ACE_surgicalKit","ACE_personalAidKit"]
-#define ARSENAL_TOOLS ["ACE_LIB_LadungPM","LIB_ToolKit","ACE_LIB_FireCord","ACE_Clacker","ToolKit","ACE_wirecutter","ACE_Fortify","ACE_DefusalKit","ACE_MapTools","ACE_Kestrel4500","ACE_Flashlight_MX991","ACE_rope12","ACE_rope15","ACE_rope18","ACE_rope27","ACE_rope3","ACE_rope36","ACE_rope6"]
+#define ARSENAL_TOOLS ["ACE_LIB_LadungPM","LIB_ToolKit","ACE_LIB_FireCord","ACE_Clacker","ToolKit","ACE_wirecutter","ACE_Fortify","ACE_DefusalKit","ACE_Kestrel4500","ACE_rope12","ACE_rope15","ACE_rope18","ACE_rope27","ACE_rope3","ACE_rope36","ACE_rope6"]
 
 if !(hasInterface) exitWith {};
 
@@ -31,16 +31,10 @@ private _ARSENAL_DISPLAY_ID = ["ace_arsenal_displayClosed", {
 
 // Make sub categorys to them
 [ARSENAL_MEDICAL, "Medical","a3\ui_f\data\igui\cfg\actions\heal_ca.paa"] call ace_arsenal_fnc_addRightPanelButton;
-[ARSENAL_TOOLS, "Tools", "a3\ui_f\data\igui\cfg\actions\repair_ca.paa"] call ace_arsenal_fnc_addRightPanelButton;
+[ARSENAL_TOOLS, "Engineering", "a3\ui_f\data\igui\cfg\actions\repair_ca.paa"] call ace_arsenal_fnc_addRightPanelButton;
 
-// Get list of items in players' loadout
-private _allPlayableUnitsItems = (flatten getUnitLoadout player);
 {
-	[_x, _allPlayableUnitsItems, true] call ace_arsenal_fnc_addVirtualItems;
-}forEach SESO_var_arsenals;
-
-// Initialize arsenal box
-{
+	// addAction to add currently held weapon to arsenal
 	_x addAction
 		[
 			"Add Currently Held Weapon to Arsenal",	// title

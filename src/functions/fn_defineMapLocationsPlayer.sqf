@@ -47,7 +47,9 @@ private _allLocationTypes = ["Name","NameCity","NameVillage","Flag","Hill","Name
 		case "ColorKhaki": {_locationType = "NameLocal"};
 		case "ColorBlack": {_locationType = "Hill"};
 		case "ColorGreen": {_locationType = "VegetationFir"};
+		case "ColorYellow": {_locationType = "VegetationPalm"};
 		case "ColorBlue": {_locationType = "NameMarine"};
+		case "ColorGrey": {_locationType = "RockArea"};
 		default {_locationType = "Name"};
 	};
 	deleteMarkerLocal (_x);

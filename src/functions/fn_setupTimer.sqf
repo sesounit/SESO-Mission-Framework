@@ -18,27 +18,38 @@
 * Public: Yes
 */
 
-params ["_endTime", ["_timeMultiplier", 1]];
+params ["_endTime", ["_timeMultiplier", 1], ["_mode","on_load"]];
 
 //SESO_isCanceled = false;
 
-// Server Only
-if (isServer) then {
-	[_endTime, true] call BIS_fnc_countdown;
-	waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
-	// Time Multipler
-	setTimeMultiplier _timeMultiplier;
-	// Set Respawn tickets
-	[missionNamespace, round ((playersNumber playerSide) * 2.5)] call BIS_fnc_respawnTickets;
-};
 
-// Players Only
-if(hasInterface) then {
-	waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
-	["SetupOverNotif"] call BIS_fnc_showNotification;
-	//if (SESO_isCanceled) then {
-	//	["SetupCanceledNotif"] call BIS_fnc_showNotification;
-	//} else {
-	//	["SetupOverNotif"] call BIS_fnc_showNotification;
-	//};
-};
+switch (_mode) do {
+	// on_load
+	case ("on_load"): {
+		// Server Only
+		if (isServer) then {
+			[_endTime, true] call BIS_fnc_countdown;
+			waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
+			// Time Multipler
+			setTimeMultiplier _timeMultiplier;
+			// Set Respawn tickets
+			[missionNamespace, round ((playersNumber playerSide) * 2.5)] call BIS_fnc_respawnTickets;
+		};
+
+		// Players Only
+		if(hasInterface) then {
+			waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
+			["SetupOverNotif"] call BIS_fnc_showNotification;
+		};
+	};
+
+	// cancel
+	case ("cancel"): {
+		// Players Only
+		if(hasInterface) then {
+			[-1] call BIS_fnc_countdown;
+			["SetupCanceledNotif"] call BIS_fnc_showNotification;
+		};
+	};
+
+}

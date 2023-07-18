@@ -2,104 +2,100 @@
 // Set Diary
 player setDiarySubjectPicture ["Diary", "a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa"];
 // Intel
-_intelText = player createDiaryRecord ["Diary", ["Intel",
+private _intelText = player createDiaryRecord ["Diary", ["Intel",
 "
-Time: 1944/12/28 0715
+Time: 1945/02/22 0830
 <br/>
-Weather: Light Rain
+Weather: Clear
 <br/>
-Fog: Medium
+Fog: Clear
 <br/><br/>
 Enemy TO/E
 <br/>
-Factions: Italians, Allies (Britain, United States, Canada)
+Factions: Germans (Waffen SS)
 <br/>
-Vehicles/Statics: Tanks, APCs, Trucks, Anti-Air Statics, Artillery Statics, Heavy Machinegun Statics
+Vehicles/Statics: Tanks, APCs, Trucks, Heavy Machinegun Statics, AT Gun Statics
+<br/>
+Convoy Itinerary:
+<br/>
+Convoy Ethel starts at Base Sud and ends at Panzer Barracks. They will move 15 min after entering OBJ Lion<br/>
 <br/><br/>
 Friendly TO/E
 <br/>
-Factions: Germans (Wehrmacht, Luftwaffe)
+Factions: SESO, Allies (SHAEF)
 <br/>
-Vehicles/Statics: None
+Vehicles/Statics: MHQ Matador, Jeeps
 <br/>
-Fire Support: None
+Indirect Support: x4 Artillery Strikes (12 Flak-36 shells each), x1 Supply Drop (1 Arsenal)
 <br/>
-Misc. Support: anti-tank mines, anti-infantry mines, TNT charges, anti-tank rocket launchers (in OBJ Sentinel) 
-<br/><br/>
 "
 ]];
 
 // Signal
-_executionText = player createDiaryRecord ["Diary", ["Signal",
+private _signalText = player createDiaryRecord ["Diary", ["Signal",
 "
-LRR Radio: AN/PRC-77
+LRR Radio: AN/PRC-152
 <br/>
 SRR Radio: None
 <br/>
-OPSCOM LRR Frequency: 30Hz
+OPSCOM LRR Channel: 1
 <br/>
-BRAVO LRR Frequency: 30Hz
+BRAVO LRR Channel: 1
 <br/>
-Green Smoke: BLUFOR nearby / LZ Marker
+Green Smoke/Flare: BLUFOR nearby / LZ Marker
 <br/>
-Red Smoke: OPFOR nearby / TFP marker
+Red Smoke/Flare: OPFOR nearby / TFP marker
 <br/>
-Yellow Smoke: Mass casualties received
+Purple Smoke/Flare: Mass casualties received
 "
 ]];
 
 
 // Execution
-_executionText = player createDiaryRecord ["Diary", ["Execution",
+private _executionText = player createDiaryRecord ["Diary", ["Execution",
 "
-1. Select a drop point within DZ Dog
+1. Reach Charlie squad
 <br/>
-2. Re-group with friendly forces at ORV 1 or other RV
+2. Assault enemy positions towards OBJ Rat, Monster
 <br/>
-3. Attack OBJ Sentinel to recover anti-tank equipment
+3. Secure 4 POW operatives from OBJ Monster
 <br/>
-4. Destroy FSBs surrounding OBJ Pizza that could hinder your attack
+4. Secure 4 POW operatives from OBJ Rat
 <br/>
-5. Ambush QRF Lion in OBJ Tamer
+5. Reach the Panzer Barracks
 <br/>
-NOTE: QRF Lion will only engage after OBJ Pizza is attacked
+6. Secure OBJ Lion
 <br/>
-6. Attack OBJ Pizza to recover the captives and munitions
+7. Setup an ambush for Convoy Ethel
 <br/>
-7. Mark a vehicle with the German national flag
+8. Destroy Convoy Ethel
 <br/>
-8. EVAC to FOB Crown with the marked vehicle, passing through the Active Combat Zone
+9. EVAC to OBJ Lion
 "
 ]];
 
 // Mission
-_missionText = player createDiaryRecord ["Diary", ["Missions",
+private _missionText = player createDiaryRecord ["Diary", ["Missions",
 "
-1. Recover captives and munitions from OBJ Pizza to FOB Crown
+1. Rescue POW Operatives from OBJ Rat, Monster
 <br/>
-2. Acquire anti-tank equipment from OBJ Sentinel
+2. Secure OBJ Lion
 <br/>
-3. Ambush QRF Lion in OBJ Tamer
+3. Deter Convoy Ethel
 "
 ]];
 
 // Situation
-_situationText = player createDiaryRecord ["Diary", ["Situation",
+private _situationText = player createDiaryRecord ["Diary", ["Situation",
 "
-BLUF: The Gothic Line at Garfagnana has seen unending combat. There are not enough ammunition to serve the 148th Reserve Division from holding the flank. Recover captured men and munitions from Allied-occupied Piazzana to reinforce the Gothic Line.
+BLUF: Rescue POW operatives with Charlie at OBJ Rat, Monster. Capture OBJ Lion for a future FOB.
 <br/><br/>
 ---
 <br/><br/>
-The Gothic Line has surprisingly holds back the Allies. Germans are huddled in the ruins and mountainsides of the Tuscan Apennines, repelling most Allied advances. However, since the start of Operation Olive, Allies have began poking holes in our defense.
+Our recent success to raid enemy supplies has challenged the Panzerwaffen to occupy our territory. Based off the intel acquired from the “Hüttenhain” truck, among other things, German forces were planning an assault south of the Todt Airfield to encroach on MOB Bell. Command sent Charlie to block their advance but their operation was a failure. Multiple operatives were captured by German forces and held at military structures within OBJ Rat and Monster. You are sent to clean up the mess.
 <br/><br/>
-The German 14th Army has been reversing Operation Olive with our own attack onto Garfagnana. It is becoming one of the few Axis victories of Italy. The 148th Reserve Division attempt to hold the flanks, yet the amount of combat seen by its forces has depleted most of our munitions.
+Once Charlie is regrouped, they will retake the German-occupied territory while you, Bravo, advance to the Panzer Barracks. Marked as OBJ Lion, the barracks are the primary command center of the Panzerwaffen. Its capture will not only sever the head of the panzers but help establish a new FOB for future operations elsewhere on the island.
 <br/><br/>
-The 14th Army command established the 'Kampgruppe Wolf', made up of Fallschirmjäger or German Paratroopers. Wolf squad is tasked with the requisition of captured forces and munitions in the town of Piazzana. The Luftwaffe will drop you behind enemy lines to wreak havoc, rescue Axis captives, and recover our ammunition. Return to FOB Crown through the Active Combat Zone. If you don our national flag, you will be spared from friendly fire.
-<br/><br/>
-In order to pull forces away from Piazzana, a diversionary attack will be made west of the main objective. This will pull enemy forces away from their fortified positions while you sneak through the Tuscan wilderness. The attack will last indefinitely until the end of Operation Rosso.
-<br/><br/>
-Due to the AA FSB located North of Piazzana, you will have to be dropped further away from the main objective. Select a position within DZ Dog as your team's designated drop point. ORV 1 is a designated area with enough light and security to gather.
-<br/><br/>
-QRF Lion is likely to interrupt your attack on OBJ Pizza as soon as it begins. Use the sappers to setup an ambush in OBJ Tamer. Anti-tank launchers are also dropped in the Allied-held OBJ Sentinel. 
+Regarding Project Hüttenhain, it is a secret weapon currently in developed by the head of the Reich Research Council, Bernhard Rust. The Germans call their weapon Schreies or Screams. OPSCOM believes the weapon’s description is under further layers of ciphers that will take more intel to unearth.
 "
 ]];

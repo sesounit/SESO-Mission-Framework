@@ -7,11 +7,11 @@
 
 // Mission Header
 author="Dildo Sagbag";
-briefingName = "Operation Rosso";
-onLoadName="Operation Rosso";
-onLoadMission= "Rescue Wehrmacht soldiers.";
-overviewPicture="thumbnail2.jpg";
-loadScreen="thumbnail2.jpg";
+briefingName = "Epsilon Campaign";
+onLoadName="Epsilon Campaign";
+onLoadMission= "BLUF: Rescue POW operatives with Charlie at OBJ Rat, Monster. Capture OBJ Lion for a future FOB.";
+overviewPicture="thumbnail.jpg";
+loadScreen="thumbnail.jpg";
 class Header{gameType=Zeus;};
 
 // Mission Settings
@@ -31,7 +31,7 @@ enableTargetDebug = 1;
 respawn = "BASE";
 respawnDelay = 5;
 respawnOnStart = -1;
-respawnVehicleDelay = 15;
+respawnVehicleDelay = 3;
 respawnTemplates[] = {"MenuPosition", "Tickets", "Group"};
 respawnTemplatesVirtual[] = {};
 
@@ -80,9 +80,9 @@ class CfgDebriefingSections {
 };
 
 // HALs Store
-//#define HALs_DEF_INIT
-//	#include "HALs\Addons\main\config.hpp"
-//#undef HALs_DEF_INIT
+#define HALs_DEF_INIT
+	#include "HALs\Addons\main\config.hpp"
+#undef HALs_DEF_INIT
 
 class CfgFunctions
 {
@@ -90,15 +90,15 @@ class CfgFunctions
 	#include "conv\cfg\functions.hpp"
 	// SESO Mission Scripts
 	#include "functions\cfgFunctions.hpp"
-	//HALs Store
-//	#define HALs_DEF_FUNCTIONS
-//		#include "HALs\Addons\main\config.hpp"
-//	#undef HALs_DEF_FUNCTIONS
+	// HALs Store
+	#define HALs_DEF_FUNCTIONS
+		#include "HALs\Addons\main\config.hpp"
+	#undef HALs_DEF_FUNCTIONS
 };
 
 class CfgSounds
 {
-	sounds[] =  {radioclick};
+	sounds[] =  {radioclick,WhistleShort,WhistleLong};
 
 	class radioclick
 	{
@@ -106,21 +106,69 @@ class CfgSounds
 		sound[] = {\snd\radioclick.ogg, 1, 1.0};
 		titles[] = {0, ""};
 	};
+
+	class WhistleShort {
+        name = "";
+        sound[] = {\snd\short.ogg, 7, 1, 300};
+        titles[] = {};
+    };
+
+    class WhistleLong {
+        name = "";
+        sound[] = {\snd\long.ogg, 7, 1, 300};
+        titles[] = {};
+    };
 };
 
 // Custom SESO Fortify Preset
 class ACEX_Fortify_Presets {
-    class SESO_preset {
-        displayName = "SESO Preset";
+    class SESO_ww2_desert_preset {
+        displayName = "SESO WW2 Desert Sandbags";
         objects[] = {
 			{"Land_Fort_Watchtower_EP1",50},
 			{"Land_fortified_nest_big_EP1",100},
 			{"Land_fortified_nest_small_EP1",25},
 			{"Land_BagFence_Round_F",5},
 			{"Land_BagFence_Short_F",5},
-			{"Land_BagFence_Long_F",10},
+			{"Land_BagFence_Long_F",10}
+		};
+    };
+
+		class SESO_ww2_jungle_preset {
+        displayName = "SESO WW2 Jungle Sandbags";
+        objects[] = {
+			{"Land_HBarrier_01_tower_green_F",50},
+			{"Land_BagBunker_01_large_green_F",100},
+			{"Land_BagBunker_01_small_green_F",25},
+			{"Land_BagFence_01_round_green_F",5},
+			{"Land_BagFence_01_short_green_F",5},
+			{"Land_BagFence_01_long_green_F",10},
+		};
+    };
+
+	class SESO_ww2_blockades_preset {
+		displayName = "SESO WW2 Blockades"
+		objects[] = {
 			{"Land_Razorwire_F",10},
 			{"Land_CzechHedgehog_01_old_F",5}
 		};
-    };
+	};
+
+	class SESO_ww2_weapons_preset {
+		displayName = "SESO WW2 Weapons"
+		objects[] = {
+			{"I_G_HMG_02_high_F",125},
+			{"B_G_HMG_02_F", 125},
+			{"LIB_leFH18_AT",250}
+		};
+	};
+
+	class SESO_ww2_logistics_preset {
+		displayName = "SESO WW2 Logistics"
+		objects[] = {
+			{"ACE_Wheel",50},
+			{"ACE_Track",50},
+			{"Land_CanisterFuel_F",100}
+		};
+	};
 };

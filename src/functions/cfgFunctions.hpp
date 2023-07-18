@@ -95,5 +95,45 @@ class SESO
 		{
 			description = "https://forums.bohemia.net/forums/topic/226608-simple-convoy-script-release/";
 		};
+		class iconViewer
+		{
+			description = "https://forums.bohemia.net/forums/topic/231519-icon-viewer-script/";
+		};
+		class replaceBadFace
+		{
+			description = "Replaces custom and default faces with a random other face in vanilla Arma 3."
+		};
+		class getPlayerUnitsItems
+		{
+			description = "Gets list of all gear used by all playable units. Best used with initArsenalServer."
+		};
+		class hideGlobalChatWhenUncon
+		{
+			description = "Disables Global Chat channel when player gets downed and re-enables it when they are conscious. NEED TO RE-ENABLE CHANNEL WHEN PLAYER RESPAWNS."
+		};
+		class drawLineServer
+		{
+			description = "Initializes drawLine."
+		};
+		class drawLinePlayer
+		{
+			description = "Draws (poly)lines connecting between markers placed in the eden editor."
+		};
+		class swimFaster
+		{
+			description = "Makes unit swim faster when in water."
+		};
+		class fortifyInit
+		{
+			description = "Initialize Fortify system, based off Hearts and Minds"
+		};
+		class whistleInit
+		{
+			description = "Adds a whistle equipment to all players, self action to whistle short or whistle long."
+		};
+		class artySupport
+		{
+			description = "Call artillery support."
+		};
 	};
 };

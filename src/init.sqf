@@ -1,7 +1,7 @@
 // War Crime Detector
 [] call SESO_fnc_detectWarCrime;
 
-waitUntil {time > 0};
+waitUntil {cba_missiontime > 0};
 
-/// Setup Timer
+// Setup Timer
 [1500] call SESO_fnc_setupTimer;

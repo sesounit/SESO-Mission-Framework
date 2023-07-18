@@ -6,9 +6,9 @@
 *
 * Arguments:
 * 0: Container for ammunition <OBJECT>
-* 1: ACE Arsenal to pre-define additional ammunition, usually from player gear <OBJECT>
-* 2: Distance to check around the container for nearby weapons and ammunition <NUMBER>
-* 3: Clear the box of existing ammo and weapons before adding new ones <BOOLEAN>
+* 1: ACE Arsenal to pre-define additional ammunition, usually from player gear <OBJECT> Default no arsenal
+* 2: Distance to check around the container for nearby weapons and ammunition <NUMBER> Default 500
+* 3: Clear the box of existing ammo and weapons before adding new ones <BOOLEAN> Default true
 *
 * Return Value:
 * None
@@ -20,11 +20,11 @@ params ["_ammoBox", "_arsenal", ["_radiusOfCheck",500], ["_clearBox",true]];
 // init lists
 private _ammoList = [];
 private _weaponList = [];
+private _arsenalList = [];
 
 // Get arsenal's items and add to ammo & weapon lists
 if (!isNil "_arsenal") then {
-	_arsenalList = flatten (_arsenal getVariable ["ace_arsenal_virtualItems", []]);
-	//TODO: Export all items from arsenal and add to _ammoList & _weaponList
+	_arsenalList = (_arsenal getVariable ["ace_arsenal_virtualItems", []]);
 };
 
 // Add items from nearby units
@@ -36,6 +36,13 @@ if (!isNil "_arsenal") then {
 // Flatten list so it can be added to ammoBox
 _ammoList = flatten _ammoList;
 _weaponList = flatten _weaponList;
+if (!isNil "_arsenal" or count _arsenalList <= 0) then {
+	_arsenalList = flatten _arsenalList;
+	// Filter arsenal list to only include ammo
+	_arsenalList = _arsenalList select {_x isKindOf ["Default",configfile >> "CfgMagazines"]};
+} else {
+	_arsenalList = _ammoList;
+};
 
 if (isNil "_ammoList" or count _ammoList <= 0) exitWith {systemChat "ERROR: No player gear set, ending generateAmmo..."};
 
@@ -48,7 +55,7 @@ if (_clearBox == true) then {
 // Add items to box until it reaches random max load at 100%
 while { (load _ammoBox) < 1 } do {
 //for "_i" from 1 to (random 50) do {
-	private _ammoOrWeaponList = [_ammoList,_weaponList] selectRandomWeighted [0.8, 0.2];
+	private _ammoOrWeaponList = [_ammoList, _arsenalList, _weaponList] selectRandomWeighted [0.4, 0.4, 0.2];
 	_ammoBox addItemCargoGlobal [selectRandom _ammoOrWeaponList, random 5];
 	//sleep 0.5;
 };

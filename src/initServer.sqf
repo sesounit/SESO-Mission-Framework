@@ -8,15 +8,6 @@
 }forEach ((getMissionLayerEntities "Marked Buildings") select 0);
 
 
-// Generate Ammo
-[] spawn {
-	{
-		[_x] call SESO_fnc_generateAmmo;
-
-	}forEach ((getMissionLayerEntities "Ammo") select 0);
-};
-
-
 // ZBE Caching for AI performance
 [] spawn {
 	{
@@ -30,13 +21,24 @@
 // Initializes the Dynamic Groups framework and groups led by a player at mission start will be registered
 ["Initialize", [true]] call BIS_fnc_dynamicGroups;
 
-waitUntil { time > 0 };
-
-// Set tickets
-[missionNamespace, round ((playersNumber playerSide) * 3)] call BIS_fnc_respawnTickets;
-
 /// Initialize the arsenals
 [] call SESO_fnc_initArsenalServer;
 
+waitUntil { cba_missiontime > 0 };
+
+// Set tickets
+[missionNamespace, 5] call BIS_fnc_respawnTickets;
+
 // Initialize custom map locations
-[] call SESO_fnc_defineMapLocationsServer;
+//[] call SESO_fnc_defineMapLocationsServer;
+
+// Draw Borders
+//[] call SESO_fnc_drawLineServer;
+
+// Generate Ammo
+[] spawn {
+	{
+		[_x, arsenal_0] call SESO_fnc_generateAmmo;
+
+	}forEach ((getMissionLayerEntities "Ammo") select 0);
+};

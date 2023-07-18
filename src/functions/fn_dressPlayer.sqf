@@ -24,14 +24,14 @@ if ( ((face player) == "Custom") || ((face player) == "Default") ) then {
 };
 
 // Save player's items
-private _uniformInv = uniformItems player;
-
-player forceAddUniform (selectRandom PLAYER_UNIFORMS);
-
+//private _uniformInv = uniformItems player;
+//
+//player forceAddUniform (selectRandom PLAYER_UNIFORMS);
+//
 // Try to add back player's items
-{
-	if (player canAddItemToUniform _x) then {player addItemToUniform _x};
-}forEach _uniformInv;
+//{
+//	if (player canAddItemToUniform _x) then {player addItemToUniform _x};
+//}forEach _uniformInv;
 
 // Lower weapon
 //[] call SESO_fnc_lowerPlayerWeapon; // Replaces holster weapon. But doesn't work because ACE opens.
