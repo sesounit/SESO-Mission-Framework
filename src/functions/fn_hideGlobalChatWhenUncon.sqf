@@ -3,14 +3,15 @@ if !(hasInterface) exitWith {};
 private _GLOBAL_DISABLER_ID = ["ace_unconscious", {
 	params ["_unit", "_state"];
 
-	if (_unit != ACE_player) exitWith {}; // Ignore if remote unit
+	if (_unit != ACE_player) exitWith {}; // Ignore remote or AI unit
 
+	// If player is unconscious..
 	if (_state) then {
-		//0 enableChannel false;
-		[0, false] remoteExec ["enableChannel", ACE_player];
+		// Disable global chat
+		[0, false] remoteExec ["enableChannel", _unit];
 	} else {
-		//0 enableChannel true;
-		[0, true] remoteExec ["enableChannel", ACE_player];
+		// Enable Global Chat
+		[0, true] remoteExec ["enableChannel", _unit];
 	}
 }] call CBA_fnc_addEventHandler;
 

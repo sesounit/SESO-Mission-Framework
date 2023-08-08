@@ -1,3 +1,19 @@
+#define CONV_EXIT(CLASS,EXPRESSION,SENTENCES)\
+class CLASS\
+{\
+exit = 1;\
+expression = "nul = [char_mineros_leader, EXPRESSION, 'DIRECT', 3] spawn IP_fnc_simpleSentence;";\
+sentences[] = {SENTENCES};\
+};\
+
+#define CONV_NORM(CLASS,RESPONSES,SENTENCES,SOUND)\
+class CLASS\
+{\
+responses[] = {RESPONSES};\
+sentences[] = {SENTENCES};\
+sound = SOUND;\
+};\
+
 class Conversations
 {
 

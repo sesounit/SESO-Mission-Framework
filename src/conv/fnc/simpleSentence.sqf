@@ -116,7 +116,7 @@ if (_liveFeed && {(vehicle _speaker) == _speaker}) then {
 	player cameraEffect ["terminate", "back"];
 	camDestroy _camera;
 } else {
-	_picture = _speaker getVariable ["IP_Avatar", "conv\img\defaultAvatar.jpg"];
+	_picture = _speaker getVariable ["IP_Avatar", "src\conv\img\defaultAvatar.jpg"];
 	((uiNamespace getVariable "DLG_SimpleSentence") displayCtrl 1200) ctrlSetText _picture;
 	sleep _len;
 };

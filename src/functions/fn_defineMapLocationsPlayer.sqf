@@ -41,15 +41,15 @@ private _allLocationTypes = ["Name","NameCity","NameVillage","Flag","Hill","Name
 	private _locationSize = markerSize _x;
 	private _locationType = "Name";
 	switch (markerColor _x) do {
-		case "ColorOrange": {_locationType = "NameVillage"};
-		case "ColorPink": {_locationType = "NameCity"};
-		case "ColorRed": {_locationType = "NameCityCapital"};
-		case "ColorKhaki": {_locationType = "NameLocal"};
-		case "ColorBlack": {_locationType = "Hill"};
-		case "ColorGreen": {_locationType = "VegetationFir"};
-		case "ColorYellow": {_locationType = "VegetationPalm"};
-		case "ColorBlue": {_locationType = "NameMarine"};
-		case "ColorGrey": {_locationType = "RockArea"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsNameVillageColor"): {_locationType = "NameVillage"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsNameCityColor"): {_locationType = "NameCity"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsNameCityCapitalColor"): {_locationType = "NameCityCapital"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsNameLocalColor"): {_locationType = "NameLocal"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsHillColor"): {_locationType = "Hill"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsVegetationFirColor"): {_locationType = "VegetationFir"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsVegetationPalmColor"): {_locationType = "VegetationPalm"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsNameMarineColor"): {_locationType = "NameMarine"};
+		case (missionNamespace getVariable "SESO_setting_CustomMapLocationsRockAreaColor"): {_locationType = "RockArea"};
 		default {_locationType = "Name"};
 	};
 	deleteMarkerLocal (_x);

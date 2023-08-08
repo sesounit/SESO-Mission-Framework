@@ -1,7 +1,13 @@
-// War Crime Detector
-[] call SESO_fnc_detectWarCrime;
+//if (isServer) then {
+//    [] spawn compileScript ["src\init_server.sqf"];
+//};
 
-waitUntil {cba_missiontime > 0};
+//[] spawn compileScript ["src\init_common.sqf"];
 
-// Setup Timer
-[1500] call SESO_fnc_setupTimer;
+if (!isDedicated && hasInterface) then {
+    [] spawn compileScript ["src\init_player.sqf"];
+};
+
+//if (!isDedicated && !hasInterface) then {
+//    [] call compileScript ["src\init_headless.sqf"];
+//};

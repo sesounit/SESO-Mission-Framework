@@ -36,7 +36,7 @@ _conversation = [_this, 2, "", [""]] call BIS_fnc_param;
 _config = missionConfigFile >> "Conversations" >> _conversation;
 
 _handle = createDialog "IP_DLG_CONVERSATION";
-_picture = _first getVariable ["IP_Avatar", "conv\img\defaultAvatar.jpg"];
+_picture = _first getVariable ["IP_Avatar", "src\conv\img\defaultAvatar.jpg"];
 ctrlSetText [1200, _picture];
 _rank = if ((side _first) != civilian) then {if (!isNil "IP_fnc_getRank") then {(([_first, false] call IP_fnc_getRank) + "<br/>")} else {(rank _first) + "<br/>"}} else {""};
 _faction = if ((_first getVariable ["IP_Faction", ""]) != "") then {((getText(missionConfigFile >> "Factions" >> (_first getVariable "IP_Faction") >> "displayName")) + "<br/>")} else {""};

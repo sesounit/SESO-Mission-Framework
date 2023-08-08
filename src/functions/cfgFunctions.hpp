@@ -2,7 +2,7 @@ class SESO
 {
 	class Common
 	{
-		file = "functions";
+		file = "src\functions";
 		class immersiveSpawn
 		{
 			description = "Spawns players immersively";
@@ -134,6 +134,14 @@ class SESO
 		class artySupport
 		{
 			description = "Call artillery support."
+		};
+		class unconScream
+		{
+			description = "Randomly scream and moan while unconscious to let nearby players know the player is incapacitated."
+		};
+		class snow
+		{
+			description = "https://github.com/Asaayu/Immersed-Weather"
 		};
 	};
 };

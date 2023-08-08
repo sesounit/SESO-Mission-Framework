@@ -14,19 +14,16 @@ Enemy TO/E
 <br/>
 Factions: Germans (Waffen SS)
 <br/>
-Vehicles/Statics: Tanks, APCs, Trucks, Heavy Machinegun Statics, AT Gun Statics
+Vehicles/Statics: APCs, Trucks, Heavy Machinegun Statics, AA Gun Statics, AT Gun Statics
 <br/>
-Convoy Itinerary:
-<br/>
-Convoy Ethel starts at Base Sud and ends at Panzer Barracks. They will move 15 min after entering OBJ Lion<br/>
 <br/><br/>
 Friendly TO/E
 <br/>
 Factions: SESO, Allies (SHAEF)
 <br/>
-Vehicles/Statics: MHQ Matador, Jeeps
+Vehicles/Statics: MHQ Matador, Jeeps, Red Fuel Truck
 <br/>
-Indirect Support: x4 Artillery Strikes (12 Flak-36 shells each), x1 Supply Drop (1 Arsenal)
+Indirect Support: x1 Supply Drop (1 Arsenal)
 <br/>
 "
 ]];
@@ -54,48 +51,43 @@ Purple Smoke/Flare: Mass casualties received
 // Execution
 private _executionText = player createDiaryRecord ["Diary", ["Execution",
 "
-1. Reach Charlie squad
+1. Secure OBJ Leningrad
 <br/>
-2. Assault enemy positions towards OBJ Rat, Monster
+2. Reach OBJ Grouse
 <br/>
-3. Secure 4 POW operatives from OBJ Monster
+3. Secure OBJ Grouse
 <br/>
-4. Secure 4 POW operatives from OBJ Rat
+4. Plant explosives on the red fuel truck
 <br/>
-5. Reach the Panzer Barracks
+5. Position the red fuel truck on top of the bridge
 <br/>
-6. Secure OBJ Lion
+6. Detonate the explosives to destroy the bridge.
 <br/>
-7. Setup an ambush for Convoy Ethel
-<br/>
-8. Destroy Convoy Ethel
-<br/>
-9. EVAC to OBJ Lion
+7. EVAC to FOB Lion
 "
 ]];
 
 // Mission
 private _missionText = player createDiaryRecord ["Diary", ["Missions",
 "
-1. Rescue POW Operatives from OBJ Rat, Monster
+1. Secure OBJ Leningrad
 <br/>
-2. Secure OBJ Lion
+2. Secure OBJ Grouse
 <br/>
-3. Deter Convoy Ethel
+3. Destroy the bridge at OBJ Pegasus
 "
 ]];
 
 // Situation
 private _situationText = player createDiaryRecord ["Diary", ["Situation",
 "
-BLUF: Rescue POW operatives with Charlie at OBJ Rat, Monster. Capture OBJ Lion for a future FOB.
+BLUF: Destroy the bridge at OBJ Pegasus.
 <br/><br/>
 ---
 <br/><br/>
-Our recent success to raid enemy supplies has challenged the Panzerwaffen to occupy our territory. Based off the intel acquired from the “Hüttenhain” truck, among other things, German forces were planning an assault south of the Todt Airfield to encroach on MOB Bell. Command sent Charlie to block their advance but their operation was a failure. Multiple operatives were captured by German forces and held at military structures within OBJ Rat and Monster. You are sent to clean up the mess.
+Panzer Barracks, a future home for Bravo squad, has proved useful. According to our intel, most German forces are housed in Base Sud. They receive supply from headquaters in the north due to the railroad.
 <br/><br/>
-Once Charlie is regrouped, they will retake the German-occupied territory while you, Bravo, advance to the Panzer Barracks. Marked as OBJ Lion, the barracks are the primary command center of the Panzerwaffen. Its capture will not only sever the head of the panzers but help establish a new FOB for future operations elsewhere on the island.
+You will need to eliminate this railroad in OBJ Pegasus using the fuel truck you acquired earlier. Wrap it with explosives and set it to blow in OBJ Pegasus.
 <br/><br/>
-Regarding Project Hüttenhain, it is a secret weapon currently in developed by the head of the Reich Research Council, Bernhard Rust. The Germans call their weapon Schreies or Screams. OPSCOM believes the weapon’s description is under further layers of ciphers that will take more intel to unearth.
 "
 ]];

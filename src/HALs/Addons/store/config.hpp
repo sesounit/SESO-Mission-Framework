@@ -24,9 +24,9 @@ class cfgHALsStore {
 			displayName = "Handguns";
 			picture = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\handgun_ca.paa";
 
-			ITEM(CUP_hgun_Deagle, 500, 5);
-			ITEM(CUP_hgun_Colt1911, 300, 10);
-			ITEM(CUP_hgun_Makarov, 100, 10);
+			ITEM(JMSSA_M1934_pistol, 5, 5);
+			ITEM(CUP_hgun_Colt1911, 5, 10);
+			ITEM(CUP_hgun_Makarov, 5, 10);
 		};
 		class launchers {
 			displayName = "Rocket Launchers";

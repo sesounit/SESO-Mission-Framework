@@ -7,9 +7,9 @@ class CfgWorlds
 		//ACE_Humidity[]  = {80, 79, 78, 78, 79, 82, 82, 82, 82, 82, 83, 82};
 
 		author = "Dildo Sagbag";
-		description = "Tuscan Apennines, 1944";
-		pictureMap = "\WW2\TerrainsWW2_swurvin\Greece_Pella_Region_t\Satelite.paa";
-		pictureShot = "A3\map_Stratis\data\ui_Stratis_ca.paa";
+		description = "Todt, 1945";
+		pictureMap = "src\Todt_Epsilon.jpg";
+		pictureShot = "Todt\sat.paa";
 
 		loadingTexts[] = {
 			// Generic

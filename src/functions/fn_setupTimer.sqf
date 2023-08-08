@@ -18,22 +18,26 @@
 * Public: Yes
 */
 
-params ["_endTime", ["_timeMultiplier", 1], ["_mode","on_load"]];
+params ["_endTime", ["_ticketsCoef", -1], ["_timeMultiplier", 1], ["_mode","on_load"]];
 
 //SESO_isCanceled = false;
-
+private _previousTimeMultiplier = timeMultiplier;
 
 switch (_mode) do {
 	// on_load
 	case ("on_load"): {
 		// Server Only
 		if (isServer) then {
+			// Set Time Multiplier to real time so count-down runs at real-time
+			setTimeMultiplier _timeMultiplier;
 			[_endTime, true] call BIS_fnc_countdown;
 			waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
-			// Time Multipler
-			setTimeMultiplier _timeMultiplier;
+			// Return Previous Time Multipler
+			setTimeMultiplier _previousTimeMultiplier;
 			// Set Respawn tickets
-			[missionNamespace, round ((playersNumber playerSide) * 2.5)] call BIS_fnc_respawnTickets;
+			if (_ticketsCoef >= 0) then {
+				[missionNamespace, round ((playersNumber playerSide) * _ticketsCoef)] call BIS_fnc_respawnTickets;
+			};
 		};
 
 		// Players Only
