@@ -7,13 +7,13 @@ whistle_soundsource attachTo [player,[0,0,0]];\
 sleep 1;\
 };\
 
-_action = ["SESO_whistle_parent","Whistle","data\icon.paa",{WHISTLE("WhistleShort")},{true}] call ace_interact_menu_fnc_createAction; 
+_action = ["SESO_whistle_parent","Whistle","src\data\icon.paa",{WHISTLE("WhistleShort")},{true}] call ace_interact_menu_fnc_createAction; 
 [player, 1, ["ACE_SelfActions","ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-_action = ["SESO_whistle_short","Whistle Short","data\icon.paa",{WHISTLE("WhistleShort")},{true}] call ace_interact_menu_fnc_createAction; 
+_action = ["SESO_whistle_short","Whistle Short","src\data\icon.paa",{WHISTLE("WhistleShort")},{true}] call ace_interact_menu_fnc_createAction; 
 [player, 1, ["ACE_SelfActions","ACE_Equipment","SESO_whistle_parent"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-_action = ["SESO_whistle_long","Whistle Long","data\icon.paa",{WHISTLE("WhistleLong")},{true}] call ace_interact_menu_fnc_createAction; 
+_action = ["SESO_whistle_long","Whistle Long","src\data\icon.paa",{WHISTLE("WhistleLong")},{true}] call ace_interact_menu_fnc_createAction; 
 [player, 1, ["ACE_SelfActions","ACE_Equipment","SESO_whistle_parent"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 

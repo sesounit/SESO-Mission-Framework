@@ -33,10 +33,15 @@ private _UNCON_SCREAMER_ID = ["ace_unconscious", {
 			};
 		}forEach _variation;
 
-		while {(lifeState _unit) isEqualTo "INCAPACITATED"} do {
-			["ace_medical_feedback_forceSay3D", [_unit, configName selectRandom _sounds, _distance], _targets] call CBA_fnc_targetEvent;
-			sleep (random 25);
+		[_unit] spawn {
+			params ["_unit"];
+			while {(lifeState _unit) isEqualTo "INCAPACITATED"; sleep (random 25)} do {
+				["ace_medical_feedback_forceSay3D", [_unit, configName selectRandom _sounds, _distance], _targets] call CBA_fnc_targetEvent;
+				//sleep (random 25);
+			};
 		};
+
+
 	};
 
 }] call CBA_fnc_addEventHandler;

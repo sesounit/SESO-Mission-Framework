@@ -17,7 +17,7 @@ params ["_entityLayerName",["_allPlayerUnitsItems",[]]];
 
 if !(isServer) exitWith {};
 
-//systemChat str _allPlayerUnitsItems;
+systemChat str _allPlayerUnitsItems;
 
 //private _allPlayerUnitsItems = PLAYER_UNITS_ITEMS;
 
@@ -31,10 +31,16 @@ publicVariable "SESO_var_arsenals";
 		params ["_selectedArsenal","_allPlayerUnitsItems"];
 
 		// Check to make sure arsenal has items in it before adding new items. Or wait 200 seconds.
-		waitUntil { sleep 1; (count (flatten (_selectedArsenal getVariable ["ace_arsenal_virtualItems", []]))  > 1 ) or (time > 200)};
+		//waitUntil { sleep 1; (count (flatten (_selectedArsenal getVariable ["ace_arsenal_virtualItems", []]))  > 1 ) or (time > 200)};
 
-		// Add items.
-		[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_addVirtualItems;
+		// Determine
+
+		// If arsenal is not initialized,
+		if ((count (flatten (_selectedArsenal getVariable ["ace_arsenal_virtualItems", []])) > 0 )) then {
+			[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_addVirtualItems;
+		} else {
+			[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_initBox;
+		};
 	};
 }forEach SESO_var_arsenals;
 
