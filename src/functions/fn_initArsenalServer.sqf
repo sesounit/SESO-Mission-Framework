@@ -17,7 +17,7 @@ params ["_entityLayerName",["_allPlayerUnitsItems",[]]];
 
 if !(isServer) exitWith {};
 
-systemChat str _allPlayerUnitsItems;
+//systemChat str _allPlayerUnitsItems;
 
 //private _allPlayerUnitsItems = PLAYER_UNITS_ITEMS;
 
