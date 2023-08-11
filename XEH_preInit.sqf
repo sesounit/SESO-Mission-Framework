@@ -2,7 +2,7 @@
 // https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#create-a-custom-setting-for-mission-or-mod
 
 #define PLAYER_UNITS_ITEMS ["LIB_Sten_Mk5","LIB_32rnd_9x19_t","LIB_Colt_M1911","LIB_7Rnd_45ACP","U_LIB_GBR_NCO_ParaCamo02v02pSgtM1Tho","JMSSA_ita_VAmmoSMG","ACE_MapTools","LIB_US_M18","LIB_US_M18_Green","LIB_US_M18_Red","B_LIB_UK_HSack_Blanco","ACE_elasticBandage","ACE_packingBandage","ACE_EntrenchingTool","ACE_epinephrine","ACE_morphine","ACE_tourniquet","ACE_splint","ACE_Flashlight_MX991","H_LIB_US_HelmetKaki0F_WOWhiteWO","ItemMap","ItemRadioAcreFlagged","LIB_GER_ItemCompass_deg","LIB_GER_ItemWatch","LIB_M1_Garand","LIB_8Rnd_762x63_t","LIB_FLARE_PISTOL","LIB_1Rnd_flare_white","U_LIB_GBR_EnlMan_ParaCamo03v01pPvtSmLE","JMSSA_ita_VAmmoBelt","LIB_US_Mk_2","LIB_1Rnd_flare_green","B_LIB_SOV_RA_Radio","ACRE_PRC152","H_LIB_US_HelmetKaki0C_NxNx","LIB_8Rnd_762x63","U_LIB_GBR_EnlMan_ParaCamo02v03pPvtMedSmLE","B_LIB_SOV_RA_MedicalBag_Empty","ACE_bloodIV","ACE_bloodIV_500","ACE_adenosine","ACE_surgicalKit","H_LIB_US_Helmetos_MedCRRB1234","LIB_M1919A6","LIB_50Rnd_762x63","JMSSA_ita_VAmmoStrip","LIB_M1A1_Bazooka","LIB_1Rnd_60mm_M6","JMSSA_ita_VCrewStrip","B_LIB_US_RocketBag_Empty","LIB_32Rnd_9x19_Sten"]
-#define FORGOTTEN_CUP_ITEMS ["ACRE_PRC152","ACRE_PRC343","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_SpottingScope","ACE_SpraypaintBlack","ACE_SpraypaintBlue","ACE_SpraypaintGreen","ACE_SpraypaintRed","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_Chemlight_HiGreen","B_IR_Grenade","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellYellow","HandGrenade","ACE_artilleryTable","ACE_rope12"]
+#define FORGOTTEN_CUP_ITEMS ["ACRE_PRC152","ACRE_PRC343","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_SpottingScope","ACE_SpraypaintBlack","ACE_SpraypaintBlue","ACE_SpraypaintGreen","ACE_SpraypaintRed","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_Chemlight_HiGreen","B_IR_Grenade","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellPurple","HandGrenade","DemoCharge_Remote_Mag","ACE_artilleryTable","ACE_rope12"]
 #define FORGOTTEN_WW2_ITEMS ["ACRE_PRC152","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_LIB_LadungPM","ACE_LIB_FireCord","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellYellow","SmokeShellPurple","HandGrenade","ACE_artilleryTable","ACE_rope12"]
 
 ////////////////////////////////////////////////////////////////
@@ -96,6 +96,7 @@
     }
 ] call CBA_fnc_addSetting;
 
+// BUG: Keeps adding tickets
 [
     "SESO_setting_SetupTimer",
     "SLIDER",
@@ -256,7 +257,7 @@
 
 		// Check if layer is exists
 		if (count (getMissionLayerEntities _value) <= 0) exitWith {};
-		private _entityLayerName = (getMissionLayerEntities _value) select 0;
+		private _entityLayerName = (getMissionLayerEntities _value) select 1;
 		// Check if layer has entities
 		if ((count _entityLayerName) == 0) exitWith {};
 
@@ -268,6 +269,7 @@
 // ZBE AI Caching
 ////////////////////////////////////////////////////////////////
 
+// BUG: AI Units tend to teleport whether they are cached or not.
 [
     "SESO_setting_CacheEnable",
     "CHECKBOX",
@@ -310,6 +312,36 @@
 		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
         params ["_value"];
         [_value,-1,false,100,_value,_value] execVM "src\zbe_cache\main.sqf";
+    }
+] call CBA_fnc_addSetting;
+
+////////////////////////////////////////////////////////////////
+// Advanced ACE3 Fortify
+////////////////////////////////////////////////////////////////
+
+[
+    "SESO_setting_FortifyAdvancedEnable",
+    "CHECKBOX",
+    ["Enable ACE3 Advanced Fortify", "Check to enable additional options and blueprints for the Fortify Tool and Engineers. Uncheck to leave it unchanged."],
+	["SESO Mission Framework", "ACE3 Advanced Fortify"],
+    true,
+    true // _isGlobal
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_FortifyAdvancedSwitcher",
+    "EDITBOX",
+    ["Set Object to be Blueprint Switcher", "Variable name of object that would be used by engineers to switch blueprints. Traditionally, a respawn vehicle but can be anything."],
+	["SESO Mission Framework", "ACE3 Advanced Fortify"],
+    "respawn_truck",
+    true, // _isGlobal
+    {
+        params ["_value"];
+		if !(missionNamespace getVariable "SESO_setting_FortifyAdvancedEnable") exitWith {};
+		//if (!isDedicated && hasInterface) then {
+            //systemChat _value;
+			[missionNamespace getVariable _value] call SESO_fnc_fortifyInit;
+		//};
     }
 ] call CBA_fnc_addSetting;
 
@@ -358,6 +390,8 @@
     }
 ] call CBA_fnc_addSetting;
 
+// BUG: Doesnt work, exploit works
+// TEST
 [
     "SESO_setting_GlobalChatDisableWhenUncon",
     "CHECKBOX",
@@ -370,7 +404,8 @@
 		if !(_value) exitWith {};
 		if (!isDedicated && hasInterface) then {
 			0 enableChannel true;
-			private _GLOBAL_DISABLER_ID = player addEventHandler ["Respawn", {
+            private _GLOBAL_DISABLER_ID = [] call SESO_fnc_hideGlobalChatWhenUncon;
+			private _GLOBAL_DISABLER_RESPAWN_ID = player addEventHandler ["Respawn", {
 				params ["_unit","_corpse"];
 				if !(_unit == player) exitWith {};
 
@@ -583,22 +618,7 @@
     }
 ] call CBA_fnc_addSetting;
 
-[
-    "SESO_setting_ExpandedFortifyEnable",
-    "CHECKBOX",
-    ["Enable Expanded ACE3 Fortify", "Check to enable additional options and presets for the Fortify Tool and Engineers. Uncheck to leave it unchanged."],
-	["SESO Mission Framework"],
-    true,
-    true, // _isGlobal
-    {
-        params ["_value"];
-		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			[] call SESO_fnc_fortifyInit;
-		};
-    }
-] call CBA_fnc_addSetting;
-
+// BUG: Moans are not audible
 [
     "SESO_setting_UnconScreamerEnable",
     "CHECKBOX",
@@ -609,7 +629,9 @@
     {
         params ["_value"];
 		if !(_value) exitWith {};
+        systemChat "Moan setting activated";
 		if (!isDedicated && hasInterface) then {
+            systemChat "Moan setting passed client check";
 			private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
 		};
     }
@@ -631,6 +653,7 @@
     }
 ] call CBA_fnc_addSetting;
 
+// BUG: Does not actually change swimming speed
 [
     "SESO_setting_SwimSpeedMultiplier",
     "EDITBOX",
@@ -666,6 +689,7 @@
     }
 ] call CBA_fnc_addSetting;
 
+// BUG: Cedric cant see the snow particles except inside buildings
 [
     "SESO_setting_SnowEnable",
     "CHECKBOX",

@@ -18,6 +18,10 @@
 	}] call CBA_fnc_execNextFrame;\
 }\
 
+#define ENGINEER_CHECK params ["_target", "_player"]; if (_player getUnitTrait "Engineer") then {true} else {false}
+
+params ["_switcherObject"];
+
 // Make sure player is an Engineer to use Fortify tool
 [{
 	params ["_unit", "_object", "_cost"];
@@ -43,17 +47,17 @@
 
 
 // Rest of code only for Engineer player
-if !(player getUnitTrait "Engineer") exitWith {};
+//if !(player getUnitTrait "Engineer") exitWith {};
 
-_action = ["SESO_fortify_preset_switch","Switch Fortify Blueprint","\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa",{""},{true}] call ace_interact_menu_fnc_createAction; 
-[typeOf respawn_truck, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["SESO_fortify_preset_switch","Switch Fortify Blueprint","\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa",{""},{ENGINEER_CHECK}] call ace_interact_menu_fnc_createAction; 
+[typeOf _switcherObject, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 _jungle_preset = [
 	"SESO_fortify_jungle_preset",
 	"Jungle Sandbags",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
 	DEFINE_PRESET("SESO_ww2_jungle_preset"),
-	{true}
+	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 _desert_preset = [
@@ -61,7 +65,7 @@ _desert_preset = [
 	"Desert Sandbags",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
 	DEFINE_PRESET("SESO_ww2_desert_preset"),
-	{true}
+	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 _blockades_preset = [
@@ -69,7 +73,7 @@ _blockades_preset = [
 	"Blockades",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
 	DEFINE_PRESET("SESO_ww2_blockades_preset"),
-	{true}
+	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 _weapons_preset = [
@@ -77,7 +81,7 @@ _weapons_preset = [
 	"Weapons",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
 	DEFINE_PRESET("SESO_ww2_weapons_preset"),
-	{true}
+	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 _logistics_preset = [
@@ -85,12 +89,12 @@ _logistics_preset = [
 	"Logistics",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
 	DEFINE_PRESET("SESO_ww2_logistics_preset"),
-	{true}
+	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 
 {[
-	typeOf respawn_truck,
+	typeOf _switcherObject,
 	0,
 	["ACE_MainActions","SESO_fortify_preset_switch"],
 	_x
