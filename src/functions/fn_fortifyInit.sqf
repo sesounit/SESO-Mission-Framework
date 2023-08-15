@@ -54,41 +54,49 @@ _action = ["SESO_fortify_preset_switch","Switch Fortify Blueprint","\A3\ui_f\dat
 
 _jungle_preset = [
 	"SESO_fortify_jungle_preset",
-	"Jungle Sandbags",	
+	"Defensive Structures",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
-	DEFINE_PRESET("SESO_ww2_jungle_preset"),
+	DEFINE_PRESET("SESO_defensive_preset"),
 	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
-_desert_preset = [
-	"SESO_fortify_desert_preset",
-	"Desert Sandbags",	
+//_desert_preset = [
+//	"SESO_fortify_desert_preset",
+//	"Desert Sandbags",	
+//	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
+//	DEFINE_PRESET("SESO_offensive_preset"),
+//	{ENGINEER_CHECK}
+//] call ace_interact_menu_fnc_createAction;
+
+//_blockades_preset = [
+//	"SESO_fortify_blockades_preset",
+//	"Blockades",	
+//	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
+//	DEFINE_PRESET("SESO_logistics_preset"),
+//	{ENGINEER_CHECK}
+//] call ace_interact_menu_fnc_createAction;
+
+_climbing_preset = [
+	"SESO_fortify_climbing_preset",
+	"Climbing Equipment",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
-	DEFINE_PRESET("SESO_ww2_desert_preset"),
+	DEFINE_PRESET("SESO_climbing_preset"),
 	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
-_blockades_preset = [
-	"SESO_fortify_blockades_preset",
-	"Blockades",	
+_offensive_preset = [
+	"SESO_fortify_offensive_preset",
+	"Offensive Structures",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
-	DEFINE_PRESET("SESO_ww2_blockades_preset"),
-	{ENGINEER_CHECK}
-] call ace_interact_menu_fnc_createAction;
-
-_weapons_preset = [
-	"SESO_fortify_weapons_preset",
-	"Weapons",	
-	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
-	DEFINE_PRESET("SESO_ww2_weapons_preset"),
+	DEFINE_PRESET("SESO_offensive_preset"),
 	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
 _logistics_preset = [
 	"SESO_fortify_logistics_preset",
-	"Logistics",	
+	"Logistics Equipment",	
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa",
-	DEFINE_PRESET("SESO_ww2_logistics_preset"),
+	DEFINE_PRESET("SESO_logistics_preset"),
 	{ENGINEER_CHECK}
 ] call ace_interact_menu_fnc_createAction;
 
@@ -99,4 +107,4 @@ _logistics_preset = [
 	["ACE_MainActions","SESO_fortify_preset_switch"],
 	_x
 ] call ace_interact_menu_fnc_addActionToClass;
-} forEach [_jungle_preset,_blockades_preset,_weapons_preset,_logistics_preset];
+} forEach [_jungle_preset,_climbing_preset,_offensive_preset,_logistics_preset];
