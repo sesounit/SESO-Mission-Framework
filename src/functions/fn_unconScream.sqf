@@ -2,15 +2,18 @@ if !(hasInterface) exitWith {};
 
 private _UNCON_SCREAMER_ID = ["ace_unconscious", {
 	params ["_unit", "_state"];
-
-	if (_unit != ACE_player) exitWith {}; // Ignore remote or AI unit
-
+	//systemChat "0";
+	//systemChat str _unit;
+	//systemChat str ACE_player;
+	//if (_unit != ACE_player) exitWith {}; // Ignore remote or AI unit
+	if !(isPlayer _unit) exitWith {};
+	systemChat "1";
 	if (_state) then {
-
+		systemChat "2";
 		private _distance = 50;
 		private _targets = allPlayers inAreaArray [ASLToAGL getPosASL _unit, _distance, _distance, 0, false, _distance];
 		if (_targets isEqualTo []) exitWith {};
-
+		systemChat "3";
 		private _speaker = speaker _unit;
 		if (_speaker == "ACE_NoVoice") then {
 			_speaker = _unit getVariable "ace_originalSpeaker";
@@ -32,12 +35,14 @@ private _UNCON_SCREAMER_ID = ["ace_unconscious", {
 				_index = _index + 1;
 			};
 		}forEach _variation;
-
-		[_unit] spawn {
-			params ["_unit"];
-			while {(lifeState _unit) isEqualTo "INCAPACITATED"; sleep (random 25)} do {
+		systemChat "4";
+		[_unit,_sounds,_distance,_targets] spawn {
+			systemChat "Moaning activated in scheduled environment";
+			params ["_unit","_sounds","_distance","_targets"];
+			while {(lifeState _unit) isEqualTo "INCAPACITATED"} do {
+				systemChat "Moaning!";
 				["ace_medical_feedback_forceSay3D", [_unit, configName selectRandom _sounds, _distance], _targets] call CBA_fnc_targetEvent;
-				//sleep (random 25);
+				sleep 5;
 			};
 		};
 
