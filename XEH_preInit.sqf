@@ -270,50 +270,50 @@
 ////////////////////////////////////////////////////////////////
 
 // BUG: AI Units tend to teleport whether they are cached or not.
-[
-    "SESO_setting_CacheEnable",
-    "CHECKBOX",
-    ["Enable ZBE AI Caching", "Enable or disable caching of AI and vehicles."],
-    ["SESO Mission Framework","ZBE AI Caching"],
-    true,
-    false, // _isGlobal
-    {}
-] call CBA_fnc_addSetting;
-
-
-[
-    "SESO_setting_CacheExceptionEntityLayerName",
-    "EDITBOX",
-    ["Cache Exceptions Entity Layer Name", "CASE SENSITIVE name of entity layer of vehicles and AI that will be exempt from being cached."],
-    ["SESO Mission Framework","ZBE AI Caching"],
-    "Cache Exceptions",
-    false, // _isGlobal
-    {  
-		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
-        params ["_value"];
-        [_value] spawn {
-			params ["_value"];
-			{
-				_x setVariable ["zbe_cacheDisabled",true];
-
-			}forEach ((getMissionLayerEntities _value) select 0);
-		};
-    }
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CacheDistance",
-    "SLIDER",
-    ["Caching Distance", "The minimum distance between AI and a player until caching begins. For example, 600 meters means AI further away than 600 meters will be cached."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["SESO Mission Framework","ZBE AI Caching"],
-    [100, 15000, 600, 0],
-    false, // _isGlobal
-    {  
-		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
-        params ["_value"];
-        [_value,-1,false,100,_value,_value] execVM "src\zbe_cache\main.sqf";
-    }
-] call CBA_fnc_addSetting;
+//[
+//    "SESO_setting_CacheEnable",
+//    "CHECKBOX",
+//    ["Enable ZBE AI Caching", "Enable or disable caching of AI and vehicles."],
+//    ["SESO Mission Framework","ZBE AI Caching"],
+//    true,
+//    false, // _isGlobal
+//    {}
+//] call CBA_fnc_addSetting;
+//
+//
+//[
+//    "SESO_setting_CacheExceptionEntityLayerName",
+//    "EDITBOX",
+//    ["Cache Exceptions Entity Layer Name", "CASE SENSITIVE name of entity layer of vehicles and AI that will be exempt from being cached."],
+//    ["SESO Mission Framework","ZBE AI Caching"],
+//    "Cache Exceptions",
+//    false, // _isGlobal
+//    {  
+//		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
+//        params ["_value"];
+//        [_value] spawn {
+//			params ["_value"];
+//			{
+//				_x setVariable ["zbe_cacheDisabled",true];
+//
+//			}forEach ((getMissionLayerEntities _value) select 0);
+//		};
+//    }
+//] call CBA_fnc_addSetting;
+//
+//[
+//    "SESO_setting_CacheDistance",
+//    "SLIDER",
+//    ["Caching Distance", "The minimum distance between AI and a player until caching begins. For example, 600 meters means AI further away than 600 meters will be cached."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+//    ["SESO Mission Framework","ZBE AI Caching"],
+//    [100, 15000, 600, 0],
+//    false, // _isGlobal
+//    {  
+//		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
+//        params ["_value"];
+//        [_value,-1,false,100,_value,_value] execVM "src\zbe_cache\main.sqf";
+//    }
+//] call CBA_fnc_addSetting;
 
 ////////////////////////////////////////////////////////////////
 // Advanced ACE3 Fortify
@@ -619,23 +619,21 @@
 ] call CBA_fnc_addSetting;
 
 // BUG: Moans are not audible
-[
-    "SESO_setting_UnconScreamerEnable",
-    "CHECKBOX",
-    ["Enable Moaning when Unconscious", "Check to periodically hear moaning when players are unconscious. Uncheck to leave it unchanged."],
-	["SESO Mission Framework"],
-    true,
-    true, // _isGlobal
-    {
-        params ["_value"];
-		if !(_value) exitWith {};
-        systemChat "Moan setting activated";
-		if (!isDedicated && hasInterface) then {
-            systemChat "Moan setting passed client check";
-			private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
-		};
-    }
-] call CBA_fnc_addSetting;
+//[
+//    "SESO_setting_UnconScreamerEnable",
+//    "CHECKBOX",
+//    ["Enable Moaning when Unconscious", "Check to periodically hear moaning when players are unconscious. Uncheck to leave it unchanged."],
+//	["SESO Mission Framework"],
+//    true,
+//    true, // _isGlobal
+//    {
+//        params ["_value"];
+//		if !(_value) exitWith {};
+//		if (!isDedicated && hasInterface) then {
+//			private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
+//		};
+//    }
+//] call CBA_fnc_addSetting;
 
 [
     "SESO_setting_WhistlingEnable",
