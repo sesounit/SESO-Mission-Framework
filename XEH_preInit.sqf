@@ -15,7 +15,7 @@
     ["List of Player Equipment", "Run [] call SESO_fnc_getPlayerUnitsItems in your Debug Console then paste the output here. These items will be added to the arsenals on top of their existing items. "],
 	["SESO Mission Framework", "ACE3 Auto Arsenal"],
 	str PLAYER_UNITS_ITEMS,
-    false,
+    true, // _isGlobal
     {
 		params ["_value"];
 		//missionNamespace setVariable ["SESO_var_AutoArsenalManualList",parseSimpleArray _value];
@@ -33,8 +33,7 @@
 		["Forgotten CUP Items", "Forgotten WW2 Items", "None"],
 		0
 	],
-    false
-    //{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -43,9 +42,11 @@
     ["Auto Arsenals Entity Layer Name", "CASE SENSITIVE name of entity layer with objects that will become ACE3 arsenals. The entity layer must match this exact name. Only objects in this layer will be affected."],
 	["SESO Mission Framework", "ACE3 Auto Arsenal"],
     "Arsenals",
-    false,
+    true, // _isGlobal
     {
 		params ["_value"];
+        // Server only
+		if !(isServer) exitWith {};
 		private _fullListOfEquipment = (parseSimpleArray (missionNamespace getVariable "SESO_setting_AutoArsenalManualList"));
 		_fullListOfEquipment append (parseSimpleArray (missionNamespace getVariable "SESO_setting_AutoArsenalForgottenList"));
 		[_value, _fullListOfEquipment] call SESO_fnc_initArsenalServer;
@@ -63,8 +64,7 @@
     ["Enable Setup System", "Enable Setup System. Disable if using other ticket system."],
 	["SESO Mission Framework", "Setup"],
     true,
-    false, // _isGlobal
-    {}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -73,11 +73,13 @@
     ["Before Setup Respawn Tickets", "Define respawn tickets at mission start BEFORE setup. Set to less than 0 to disable."],
 	["SESO Mission Framework", "Setup"],
     [-1,100,5,0],
-    false, // _isGlobal
+    true, // _isGlobal
     {  
 		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};
         params ["_value"];
 		if (_value < 0) exitWith {};
+        // Server only
+		if !(isServer) exitWith {};
 		[missionNamespace, _value] call BIS_fnc_respawnTickets;
     }
 ] call CBA_fnc_addSetting;
@@ -88,7 +90,7 @@
     ["After Setup Respawn Tickets Coefficient", "Define respawn tickets coefficient to use AFTER setup. Equation is (NUMBER OF PLAYERS * Coef = Tickets) rounded. Set to less than 0 to disable."],
 	["SESO Mission Framework", "Setup"],
     "2.5",
-    false, // _isGlobal
+    true, // _isGlobal
     {  
 		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};
         params ["_value"];
@@ -108,6 +110,7 @@
 		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};
 		params ["_value"];
 		if (_value < 0) exitWith {};
+        // Global
 		[_value] spawn {
 			waitUntil {cba_missiontime > 0};
 			params ["_value"];
@@ -129,8 +132,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		5
 	],
-	false, // _isGlobal
-    {}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -143,8 +145,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		10
 	],
-	false, // _isGlobal
-    {}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -157,8 +158,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		3
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -171,8 +171,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		7
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -185,8 +184,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		1
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -199,8 +197,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		8
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -213,8 +210,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		6
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -227,8 +223,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		9
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -241,8 +236,7 @@
 		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
 		2
 	],
-	false, // _isGlobal
-	{}
+    true // _isGlobal
 ] call CBA_fnc_addSetting;
 
 [
@@ -251,10 +245,12 @@
     ["Custom Map Locations Entity Layer Name", "CASE SENSITIVE name of the entity layer or folder that defines custom map locations. If not found, no map locations will be defined. Only objects in this layer will be affected."],
 	["SESO Mission Framework", "Custom Map Locations"],
     "Map Locations",
-    false, // _isGlobal
+    true, // _isGlobal
     {
 		params ["_value"];
 
+        // Server only
+		if !(isServer) exitWith {};
 		// Check if layer is exists
 		if (count (getMissionLayerEntities _value) <= 0) exitWith {};
 		private _entityLayerName = (getMissionLayerEntities _value) select 1;
@@ -270,50 +266,56 @@
 ////////////////////////////////////////////////////////////////
 
 // BUG: AI Units tend to teleport whether they are cached or not.
-//[
-//    "SESO_setting_CacheEnable",
-//    "CHECKBOX",
-//    ["Enable ZBE AI Caching", "Enable or disable caching of AI and vehicles."],
-//    ["SESO Mission Framework","ZBE AI Caching"],
-//    true,
-//    false, // _isGlobal
-//    {}
-//] call CBA_fnc_addSetting;
-//
-//
-//[
-//    "SESO_setting_CacheExceptionEntityLayerName",
-//    "EDITBOX",
-//    ["Cache Exceptions Entity Layer Name", "CASE SENSITIVE name of entity layer of vehicles and AI that will be exempt from being cached."],
-//    ["SESO Mission Framework","ZBE AI Caching"],
-//    "Cache Exceptions",
-//    false, // _isGlobal
-//    {  
-//		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
-//        params ["_value"];
-//        [_value] spawn {
-//			params ["_value"];
-//			{
-//				_x setVariable ["zbe_cacheDisabled",true];
-//
-//			}forEach ((getMissionLayerEntities _value) select 0);
-//		};
-//    }
-//] call CBA_fnc_addSetting;
-//
-//[
-//    "SESO_setting_CacheDistance",
-//    "SLIDER",
-//    ["Caching Distance", "The minimum distance between AI and a player until caching begins. For example, 600 meters means AI further away than 600 meters will be cached."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-//    ["SESO Mission Framework","ZBE AI Caching"],
-//    [100, 15000, 600, 0],
-//    false, // _isGlobal
-//    {  
-//		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
-//        params ["_value"];
-//        [_value,-1,false,100,_value,_value] execVM "src\zbe_cache\main.sqf";
-//    }
-//] call CBA_fnc_addSetting;
+[
+    "SESO_setting_CacheEnable",
+    "CHECKBOX",
+    ["Enable ZBE AI Caching", "Enable or disable caching of AI and vehicles."],
+    ["SESO Mission Framework","ZBE AI Caching"],
+    true,
+    true // _isGlobal
+] call CBA_fnc_addSetting;
+
+
+[
+    "SESO_setting_CacheExceptionEntityLayerName",
+    "EDITBOX",
+    ["Cache Exceptions Entity Layer Name", "CASE SENSITIVE name of entity layer of vehicles and AI that will be exempt from being cached."],
+    ["SESO Mission Framework","ZBE AI Caching"],
+    "Cache Exceptions",
+    true, // _isGlobal
+    {  
+		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
+        params ["_value"];
+        // Server only
+        if !(isServer) exitWith {};
+        [_value] spawn {
+			params ["_value"];
+			{
+				_x setVariable ["zbe_cacheDisabled",true];
+
+			}forEach ((getMissionLayerEntities _value) select 0);
+		};
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_CacheDistance",
+    "SLIDER",
+    ["Caching Distance", "The minimum distance between AI and a player until caching begins. For example, 600 meters means AI further away than 600 meters will be cached."],
+    ["SESO Mission Framework","ZBE AI Caching"],
+    [100, 15000, 600, 0],
+    true, // _isGlobal
+    {  
+		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
+        params ["_value"];
+        // Server only
+        if !(isServer) exitWith {};
+        [_value] spawn {
+            params ["_value"];
+            [_value,-1,false,100,_value,_value] execVM "src\zbe_cache\main.sqf";
+        };
+    }
+] call CBA_fnc_addSetting;
 
 ////////////////////////////////////////////////////////////////
 // Advanced ACE3 Fortify
@@ -338,16 +340,37 @@
     {
         params ["_value"];
 		if !(missionNamespace getVariable "SESO_setting_FortifyAdvancedEnable") exitWith {};
-		//if (!isDedicated && hasInterface) then {
-            //systemChat _value;
-			[missionNamespace getVariable _value] call SESO_fnc_fortifyInit;
-		//};
+        // Global
+        [missionNamespace getVariable _value] call SESO_fnc_fortifyInit;
     }
 ] call CBA_fnc_addSetting;
 
 ////////////////////////////////////////////////////////////////
 // Misc.
 ////////////////////////////////////////////////////////////////
+
+[
+    "SESO_setting_DisableFallDamage",
+    "CHECKBOX",
+    ["Disable Fall Damage", "Disable fall damage for players."],
+	["SESO Mission Framework"],
+    false,
+    true, // _isGlobal
+    {  
+        params ["_value"];
+		if !(_value) exitWith {};
+        // Player only
+		if !(hasInterface) exitWith {};
+        [] spawn {
+            while {true} do {
+                player allowDamage true;
+                waitUntil{!isTouchingGround player};
+                player allowDamage false;
+                waitUntil{isTouchingGround player};
+            };
+        };
+    }
+] call CBA_fnc_addSetting;
 
 [
     "SESO_setting_DynamicGroupManagerEnable",
@@ -359,10 +382,12 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
+        // Server only
 		if (isServer) then {
 			["Initialize", [true]] call BIS_fnc_dynamicGroups;
 		};
-		if (!isDedicated && hasInterface) then {
+        // Player only
+		if (hasInterface) then {
 			["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 		};
     }
@@ -378,15 +403,15 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			player enableStamina false;
-			private _STAMINA_DISABLER_ID = player addEventHandler ["Respawn", {
-				params ["_unit","_corpse"];
-				if !(_unit == player) exitWith {};
+        // Player only
+		if !(hasInterface) exitWith {};
+        player enableStamina false;
+        private _STAMINA_DISABLER_ID = player addEventHandler ["Respawn", {
+            params ["_unit","_corpse"];
+            if !(_unit == player) exitWith {};
 
-				_unit enableStamina false;
-			}];
-		};
+            _unit enableStamina false;
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -402,16 +427,16 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			0 enableChannel true;
-            private _GLOBAL_DISABLER_ID = [] call SESO_fnc_hideGlobalChatWhenUncon;
-			private _GLOBAL_DISABLER_RESPAWN_ID = player addEventHandler ["Respawn", {
-				params ["_unit","_corpse"];
-				if !(_unit == player) exitWith {};
+        // Player only
+		if !(hasInterface) exitWith {};
+        0 enableChannel true;
+        private _GLOBAL_DISABLER_ID = [] call SESO_fnc_hideGlobalChatWhenUncon;
+        private _GLOBAL_DISABLER_RESPAWN_ID = player addEventHandler ["Respawn", {
+            params ["_unit","_corpse"];
+            if !(_unit == player) exitWith {};
 
-				0 enableChannel true;
-			}];
-		};
+            0 enableChannel true;
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -426,15 +451,15 @@
         params ["_value"];
 		_value = parseNumber _value;
 		if (_value < 0) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			player setUnitTrait ["camouflageCoef",_value];
-			private _CAMO_COEF_ID = player addEventHandler ["Respawn", {
-				params ["_unit","_corpse"];
-				if !(_unit == player) exitWith {};
+		// Player only
+		if !(hasInterface) exitWith {};
+        player setUnitTrait ["camouflageCoef",_value];
+        private _CAMO_COEF_ID = player addEventHandler ["Respawn", {
+            params ["_unit","_corpse"];
+            if !(_unit == player) exitWith {};
 
-				_unit setUnitTrait ["camouflageCoef",_value];
-			}];
-		};
+            _unit setUnitTrait ["camouflageCoef",_value];
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -448,15 +473,15 @@
     {  
         params ["_value"];
 		if ((count _value) == 0) exitWith {};
-		if (!isDedicated && hasInterface) then {
+		// Player only
+		if !(hasInterface) exitWith {};
 
-			private _DEATH_MUSIC_ID = player addEventHandler ["Killed", {
-				params ["_unit"];
-				if !(_unit == player) exitWith {};
+        private _DEATH_MUSIC_ID = player addEventHandler ["Killed", {
+            params ["_unit"];
+            if !(_unit == player) exitWith {};
 
-				playMusic "CUP_A1_Arma_Magna";
-			}];
-		};
+            playMusic "CUP_A1_Arma_Magna";
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -470,15 +495,14 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			//[player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
-			private _LOAD_LAST_KIT_ID = player addEventHandler ["Killed", {
-				params ["_unit","_corpse"];
-				if !(_unit == player) exitWith {};
+		// Player only
+		if !(hasInterface) exitWith {};
+        private _AUTO_END_ID = player addEventHandler ["Killed", {
+            params ["_unit","_corpse"];
+            if !(_unit == player) exitWith {};
 
-				[] call SESO_fnc_autoEndMission;
-			}];
-		};
+            [] call SESO_fnc_autoEndMission;
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -493,15 +517,15 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			//[player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
-			private _LOAD_LAST_KIT_ID = player addEventHandler ["Respawn", {
-				params ["_unit","_corpse"];
-				if !(_unit == player) exitWith {};
+		// Player only
+		if !(hasInterface) exitWith {};
+        [player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
+        private _LOAD_LAST_KIT_ID = player addEventHandler ["Respawn", {
+            params ["_unit","_corpse"];
+            if !(_unit == player) exitWith {};
 
-				[_unit, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
-			}];
-		};
+            [_unit, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
+        }];
     }
 ] call CBA_fnc_addSetting;
 
@@ -515,9 +539,9 @@
     {  
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			[] call BIS_fnc_showMissionStatus;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+		[] call BIS_fnc_showMissionStatus;
     }
 ] call CBA_fnc_addSetting;
 
@@ -531,6 +555,7 @@
     {
         params ["_value"];
 		if !(_value) exitWith {};
+        // Global
 		[] call SESO_fnc_detectWarCrime;
     }
 ] call CBA_fnc_addSetting;
@@ -541,9 +566,11 @@
     ["Marked Buildings Custom Entity Layer Name", "CASE SENSITIVE name of layer of buildings and props to mark as grey rectangles on the map. Objects must be in this layer to be marked."],
 	["SESO Mission Framework"],
     "Marked Buildings",
-    false, // _isGlobal
+    true, // _isGlobal
     {
 		params ["_value"];
+        // Server only
+		if !(isServer) exitWith {};
 		// Check if layer is exists
 		if (count (getMissionLayerEntities _value) <= 0) exitWith {};
 		private _entityLayerName = (getMissionLayerEntities _value) select 0;
@@ -564,9 +591,11 @@
     ["Ammo Generator Custom Entity Layer Name", "CASE SENSITIVE name of layer of containers and vehicles to fill with player and nearby AI equipment and ammo. Objects must be in this layer to be filled with ammo."],
 	["SESO Mission Framework"],
     "Ammo",
-    false, // _isGlobal
+    true, // _isGlobal
     {
 		params ["_value"];
+        // Server only
+		if !(isServer) exitWith {};
 		// Check if layer is exists
 		if (count (getMissionLayerEntities _value) <= 0) exitWith {};
 		private _entityLayerName = (getMissionLayerEntities _value) select 0;
@@ -590,13 +619,13 @@
     ["Enable Medical Notifier", "Check to notify players when they are being treated by other players. Uncheck to remove this notification."],
 	["SESO Mission Framework"],
     true,
-    false, // _isGlobal
+    true, // _isGlobal
     {
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			private _MEDICAL_NOTIFIER_ID = [] call SESO_fnc_aceMedicalNotifier;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+		private _MEDICAL_NOTIFIER_ID = [] call SESO_fnc_aceMedicalNotifier;
     }
 ] call CBA_fnc_addSetting;
 
@@ -606,19 +635,19 @@
     ["Custom Color Correction", "Set custom color correction for players. Default is vanilla color correction"],
 	["SESO Mission Framework"],
     str [1,1,0,[0, 0, 0, 0],[1, 1, 1, 1],[0.299, 0.587, 0.114, 0],[-1, -1, 0, 0, 0, 0, 0]],
-    false, // _isGlobal
+    true, // _isGlobal
     {
         params ["_value"];
 		if (_value == "[1,1,0,[0, 0, 0, 0],[1, 1, 1, 1],[0.299, 0.587, 0.114, 0],[-1, -1, 0, 0, 0, 0, 0]]") exitWith {};
-		if (!isDedicated && hasInterface) then {
-			'ColorCorrections' ppEffectEnable true; 
-			'ColorCorrections' ppEffectAdjust (parseSimpleArray _value); 
-			'ColorCorrections' ppEffectCommit 0;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+        'ColorCorrections' ppEffectEnable true; 
+        'ColorCorrections' ppEffectAdjust (parseSimpleArray _value); 
+        'ColorCorrections' ppEffectCommit 0;
     }
 ] call CBA_fnc_addSetting;
 
-// BUG: Moans are not audible
+// BUG: Moans are executed on a unit for every player that runs this
 //[
 //    "SESO_setting_UnconScreamerEnable",
 //    "CHECKBOX",
@@ -629,9 +658,9 @@
 //    {
 //        params ["_value"];
 //		if !(_value) exitWith {};
-//		if (!isDedicated && hasInterface) then {
-//			private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
-//		};
+//		// Player only
+//		if !(hasInterface) exitWith {};
+//		private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
 //    }
 //] call CBA_fnc_addSetting;
 
@@ -645,9 +674,9 @@
     {
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			[] call SESO_fnc_whistleInit;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+		[] call SESO_fnc_whistleInit;
     }
 ] call CBA_fnc_addSetting;
 
@@ -663,11 +692,9 @@
         params ["_value"];
 		_value = parseNumber _value;
 		if (_value <= 1) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			private _SWIM_FASTER_ID = [_value] call SESO_fnc_swimFaster;
-			// HOW TF DOES THIS WORK BUT NOT WITH _value PARAM????
-			//private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+		private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
     }
 ] call CBA_fnc_addSetting;
 
@@ -681,9 +708,9 @@
     {
         params ["_value"];
 		if !(_value) exitWith {};
-		if (!isDedicated && hasInterface) then {
-			[group player, group player, groupId (group player)] call BIS_fnc_addRespawnPosition;
-		};
+		// Player only
+		if !(hasInterface) exitWith {};
+		[group player, group player, groupId (group player)] call BIS_fnc_addRespawnPosition;
     }
 ] call CBA_fnc_addSetting;
 
@@ -698,6 +725,7 @@
     {
         params ["_value"];
 		if !(_value) exitWith {};
+        // Global
         [] spawn {
             [] call SESO_fnc_snow;
         };
