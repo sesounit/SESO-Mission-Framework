@@ -518,7 +518,7 @@
         params ["_value"];
 		if !(_value) exitWith {};
 		// Player only
-		if !(hasInterface) exitWith {};
+		//if !(hasInterface) exitWith {};
         [player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
         private _LOAD_LAST_KIT_ID = player addEventHandler ["Respawn", {
             params ["_unit","_corpse"];
@@ -693,7 +693,7 @@
 		_value = parseNumber _value;
 		if (_value <= 1) exitWith {};
 		// Player only
-		if !(hasInterface) exitWith {};
+		//if !(hasInterface) exitWith {};
 		private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
     }
 ] call CBA_fnc_addSetting;
