@@ -3,17 +3,15 @@ if !(hasInterface) exitWith {};
 private _UNCON_SCREAMER_ID = ["ace_unconscious", {
 	params ["_unit", "_state"];
 	//systemChat "0";
-	//systemChat str _unit;
-	//systemChat str ACE_player;
+
 	//if (_unit != ACE_player) exitWith {}; // Ignore remote or AI unit
 	if !(isPlayer _unit) exitWith {};
-	systemChat "1";
+
 	if (_state) then {
-		systemChat "2";
 		private _distance = 50;
 		private _targets = allPlayers inAreaArray [ASLToAGL getPosASL _unit, _distance, _distance, 0, false, _distance];
 		if (_targets isEqualTo []) exitWith {};
-		systemChat "3";
+
 		private _speaker = speaker _unit;
 		if (_speaker == "ACE_NoVoice") then {
 			_speaker = _unit getVariable "ace_originalSpeaker";
