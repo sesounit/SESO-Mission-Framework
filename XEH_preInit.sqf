@@ -457,8 +457,9 @@
         private _CAMO_COEF_ID = player addEventHandler ["Respawn", {
             params ["_unit","_corpse"];
             if !(_unit == player) exitWith {};
+            _value = parseNumber (missionNamespace getVariable "SESO_setting_PlayerCamoCoef");
 
-            _unit setUnitTrait ["camouflageCoef",_value];
+            _unit setUnitTrait ["camouflageCoef", _value];
         }];
     }
 ] call CBA_fnc_addSetting;
@@ -518,8 +519,8 @@
         params ["_value"];
 		if !(_value) exitWith {};
 		// Player only
-		//if !(hasInterface) exitWith {};
-        [player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
+		if !(hasInterface) exitWith {};
+        //[player, [missionNamespace, "inventory_var"]] call BIS_fnc_loadInventory;
         private _LOAD_LAST_KIT_ID = player addEventHandler ["Respawn", {
             params ["_unit","_corpse"];
             if !(_unit == player) exitWith {};
@@ -693,7 +694,7 @@
 		_value = parseNumber _value;
 		if (_value <= 1) exitWith {};
 		// Player only
-		//if !(hasInterface) exitWith {};
+		if !(hasInterface) exitWith {};
 		private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
     }
 ] call CBA_fnc_addSetting;
