@@ -25,7 +25,7 @@
 if !(hasInterface) exitWith {};
 
 // Hide all starting locations
-private _allLocationTypes = ["Name","NameCity","NameVillage","Flag","Hill","NameCityCapital","VegetationBroadleaf"];
+private _allLocationTypes = ["Name","NameCity","NameVillage", "NameLocal", "NameMarine", "Flag","Hill","NameCityCapital","VegetationBroadleaf"];
 
 // TODO: Search for all map locations in CfgLocationTypes and add them to _allLocationTypes
 //"_allLocationTypes pushBack configName _x" configClasses (configFile >> "CfgLocationTypes");
