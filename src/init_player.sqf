@@ -1,10 +1,4 @@
 //[{!isNull player}, {
-// Set camera avatar for conversations
-player setVariable ["IP_LiveFeed", true];
-// Set Diary
-player execVM "src\intel\diaryRecords.sqf";
-player execVM "src\intel\sopRecords.sqf";
-
 // Disable Stamina
 //player enableStamina false;
 

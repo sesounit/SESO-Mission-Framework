@@ -5,6 +5,7 @@
 #define FORGOTTEN_CUP_ITEMS ["ACRE_PRC152","ACRE_PRC343","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_SpottingScope","ACE_SpraypaintBlack","ACE_SpraypaintBlue","ACE_SpraypaintGreen","ACE_SpraypaintRed","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_Chemlight_HiGreen","B_IR_Grenade","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellPurple","HandGrenade","DemoCharge_Remote_Mag","ACE_artilleryTable","ACE_rope12","Old_Camera_Color_HUD","Old_Camera_Color","Old_Camera_HUD","Old_Camera","Nikon_DSLR_HUD","Nikon_DSLR","immersion_pops_poppack","murshun_cigs_lighter","murshun_cigs_matches","murshun_cigs_cigpack","immersion_cigs_cigar0","murshun_cigs_cig0","immersion_pops_pop0","immersion_cigs_cigar0_nv","murshun_cigs_cig0_nv","ACE_VMM3"]
 #define FORGOTTEN_WW2_ITEMS ["ACRE_PRC152","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_LIB_LadungPM","ACE_LIB_FireCord","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellYellow","SmokeShellPurple","HandGrenade","ACE_artilleryTable","ACE_rope12","Old_Camera_Color_HUD","Old_Camera_Color","Old_Camera_HUD","Old_Camera","immersion_pops_poppack","murshun_cigs_lighter","murshun_cigs_matches","murshun_cigs_cigpack","immersion_cigs_cigar0","murshun_cigs_cig0","immersion_pops_pop0","immersion_cigs_cigar0_nv","murshun_cigs_cig0_nv","ACE_VMM3"]
 
+
 ////////////////////////////////////////////////////////////////
 // ACE3 Auto Arsenal
 ////////////////////////////////////////////////////////////////
@@ -114,7 +115,7 @@
 		[_value] spawn {
 			waitUntil {cba_missiontime > 0};
 			params ["_value"];
-			[_value, (missionNamespace getVariable ["SESO_setting_SetupTicketsCoef", -1])] call SESO_fnc_setupTimer;
+			[_value, (parseNumber (missionNamespace getVariable ["SESO_setting_SetupTicketsCoef", -1]))] call SESO_fnc_setupTimer;
 		};
     }
 ] call CBA_fnc_addSetting;

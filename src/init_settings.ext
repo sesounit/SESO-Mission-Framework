@@ -3,15 +3,15 @@
 #include "missionConversations.hpp"
 #include "sentences.bikb"
 // Custom Loading Texts
-//#include "intel\loading_Tips.hpp"
+#include "intel\loading_Tips.hpp"
 
 // Mission Header
-author="src/init_settings.ext";
-briefingName = "src/init_settings.ext";
-onLoadName="src/init_settings.ext";
-onLoadMission= "BLUF: CHANGE ME IN src/init_settings.ext";
-//overviewPicture="src\thumbnail.jpg";
-//loadScreen="src\thumbnail.jpg";
+author="Dildo Sagbag";
+briefingName = "Epsilon Campaign";
+onLoadName="Epsilon Campaign";
+onLoadMission= "BLUF: Capture Bernhard Rust. Destroy AA Turrets surrounding Culebra 1.";
+overviewPicture="src\thumbnail.jpg";
+loadScreen="src\thumbnail.jpg";
 class Header{gameType=Zeus;};
 
 // Mission Settings

@@ -15,12 +15,14 @@
 *
 * Public: Yes
 */
+#define PLAYER_UNITS_ITEMS []
 params ["_ammoBox", "_arsenal", ["_radiusOfCheck",500], ["_clearBox",true]];
 
 // init lists
 private _ammoList = [];
 private _weaponList = [];
 private _arsenalList = [];
+_arsenal = PLAYER_UNITS_ITEMS;
 
 // Get arsenal's items and add to ammo & weapon lists
 if (!isNil "_arsenal") then {
