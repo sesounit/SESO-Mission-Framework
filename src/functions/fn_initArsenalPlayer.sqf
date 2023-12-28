@@ -29,10 +29,6 @@ private _ARSENAL_DISPLAY_ID = ["ace_arsenal_displayClosed", {
 	systemChat "Loadout saved for respawn";
 }] call CBA_fnc_addEventHandler;
 
-// Make sub categorys to them
-//[ARSENAL_MEDICAL, "Medical","a3\ui_f\data\igui\cfg\actions\heal_ca.paa"] call ace_arsenal_fnc_addRightPanelButton;
-//[ARSENAL_TOOLS, "Engineering", "a3\ui_f\data\igui\cfg\actions\repair_ca.paa"] call ace_arsenal_fnc_addRightPanelButton;
-
 {
 	// addAction to add currently held weapon to arsenal
 	_x addAction

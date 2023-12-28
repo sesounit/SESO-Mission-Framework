@@ -1,1 +1,0 @@
-[] spawn compileScript ["src\init.sqf"];

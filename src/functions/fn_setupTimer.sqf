@@ -34,10 +34,6 @@ switch (_mode) do {
 			waitUntil { sleep 1; !([true] call BIS_fnc_countdown) };
 			// Return Previous Time Multipler
 			setTimeMultiplier _previousTimeMultiplier;
-			// Set Respawn tickets
-			if (_ticketsCoef >= 0) then {
-				[missionNamespace, round ((playersNumber playerSide) * _ticketsCoef)] call BIS_fnc_respawnTickets;
-			};
 		};
 
 		// Players Only

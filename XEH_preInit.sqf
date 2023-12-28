@@ -71,35 +71,20 @@
 [
     "SESO_setting_SetupStartingTickets",
     "SLIDER",
-    ["Before Setup Respawn Tickets", "Define respawn tickets at mission start BEFORE setup. Set to less than 0 to disable."],
+    ["Starting Tickets", "Define respawn tickets at mission start. Set to less than 0 to disable."],
 	["SESO Mission Framework", "Setup"],
-    [-1,100,5,0],
+    [-1,100,1,0],
     true, // _isGlobal
     {  
 		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};
         params ["_value"];
 		if (_value < 0) exitWith {};
-        // Server only
-		if !(isServer) exitWith {};
-		[missionNamespace, _value] call BIS_fnc_respawnTickets;
+        // Player only
+		if !(hasInterface) exitWith {};
+		[player, _value] call BIS_fnc_respawnTickets;
     }
 ] call CBA_fnc_addSetting;
 
-[
-    "SESO_setting_SetupTicketsCoef",
-    "EDITBOX",
-    ["After Setup Respawn Tickets Coefficient", "Define respawn tickets coefficient to use AFTER setup. Equation is (NUMBER OF PLAYERS * Coef = Tickets) rounded. Set to less than 0 to disable."],
-	["SESO Mission Framework", "Setup"],
-    "2.5",
-    true, // _isGlobal
-    {  
-		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};
-        params ["_value"];
-		if ((parseNumber _value) < 0) exitWith {};
-    }
-] call CBA_fnc_addSetting;
-
-// BUG: Keeps adding tickets
 [
     "SESO_setting_SetupTimer",
     "SLIDER",
@@ -115,11 +100,11 @@
 		[_value] spawn {
 			waitUntil {cba_missiontime > 0};
 			params ["_value"];
-			[_value, (parseNumber (missionNamespace getVariable ["SESO_setting_SetupTicketsCoef", -1]))] call SESO_fnc_setupTimer;
+			[_value] call SESO_fnc_setupTimer;
 		};
     }
 ] call CBA_fnc_addSetting;
-
+/*
 ////////////////////////////////////////////////////////////////
 // Custom Map Locations
 ////////////////////////////////////////////////////////////////
@@ -261,7 +246,7 @@
 		[_value] call SESO_fnc_defineMapLocationsServer;
     }
 ] call CBA_fnc_addSetting;
-
+*/
 ////////////////////////////////////////////////////////////////
 // ZBE AI Caching
 ////////////////////////////////////////////////////////////////
@@ -336,7 +321,7 @@
     "EDITBOX",
     ["Set Object to be Blueprint Switcher", "Variable name of object that would be used by engineers to switch blueprints. Traditionally, a respawn vehicle but can be anything."],
 	["SESO Mission Framework", "ACE3 Advanced Fortify"],
-    "respawn_truck",
+    "logi_truck",
     true, // _isGlobal
     {
         params ["_value"];
@@ -648,23 +633,6 @@
         'ColorCorrections' ppEffectCommit 0;
     }
 ] call CBA_fnc_addSetting;
-
-// BUG: Moans are executed on a unit for every player that runs this
-//[
-//    "SESO_setting_UnconScreamerEnable",
-//    "CHECKBOX",
-//    ["Enable Moaning when Unconscious", "Check to periodically hear moaning when players are unconscious. Uncheck to leave it unchanged."],
-//	["SESO Mission Framework"],
-//    true,
-//    true, // _isGlobal
-//    {
-//        params ["_value"];
-//		if !(_value) exitWith {};
-//		// Player only
-//		if !(hasInterface) exitWith {};
-//		private _UNCON_SCREAMER_ID = [] call SESO_fnc_unconScream;
-//    }
-//] call CBA_fnc_addSetting;
 
 [
     "SESO_setting_WhistlingEnable",

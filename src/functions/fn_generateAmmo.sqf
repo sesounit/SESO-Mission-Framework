@@ -22,11 +22,11 @@ params ["_ammoBox", "_arsenal", ["_radiusOfCheck",500], ["_clearBox",true]];
 private _ammoList = [];
 private _weaponList = [];
 private _arsenalList = [];
-_arsenal = PLAYER_UNITS_ITEMS;
 
 // Get arsenal's items and add to ammo & weapon lists
 if (!isNil "_arsenal") then {
-	_arsenalList = (_arsenal getVariable ["ace_arsenal_virtualItems", []]);
+	_arsenalList = (keys ([_arsenal] call ace_arsenal_fnc_getVirtualItems));
+	systemChat (str _arsenalList);
 };
 
 // Add items from nearby units
@@ -39,7 +39,7 @@ if (!isNil "_arsenal") then {
 _ammoList = flatten _ammoList;
 _weaponList = flatten _weaponList;
 if (!isNil "_arsenal" or count _arsenalList <= 0) then {
-	_arsenalList = flatten _arsenalList;
+	//_arsenalList = flatten _arsenalList;
 	// Filter arsenal list to only include ammo
 	_arsenalList = _arsenalList select {_x isKindOf ["Default",configfile >> "CfgMagazines"]};
 } else {

@@ -32,21 +32,20 @@ publicVariable "SESO_var_arsenals";
 		params ["_selectedArsenal","_allPlayerUnitsItems"];
 
 		// Check to make sure arsenal has items in it before adding new items. Or wait 200 seconds.
-		//waitUntil { sleep 1; (count (flatten (_selectedArsenal getVariable ["ace_arsenal_virtualItems", []]))  > 1 ) or (time > 200)};
+		//waitUntil { sleep 1; (count ([_selectedArsenal] call ace_arsenal_fnc_getVirtualItems)  > 1 ) or (time > 200)};
 
 		// Determine
 
 		// If arsenal is not initialized,
-		//if ((count (flatten (_selectedArsenal getVariable ["ace_arsenal_virtualItems", []])) > 0 )) then {
-		//	[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_addVirtualItems;
-		//} else {
-		//	[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_initBox;
-		//};
+		if (count ([_selectedArsenal] call ace_arsenal_fnc_getVirtualItems) > 0) then {
+			[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_addVirtualItems;
+		} else {
+			[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_initBox;
+		};
 	};
 }forEach SESO_var_arsenals;
 
 // Define Diwako's Unknown Weapon Punish whitelist
-//LIB_Sten_Mk5,LIB_M1919A6,LIB_M1_Garand,LIB_Colt_M1911,LIB_M1A1_Bazooka,LIB_FLARE_PISTOL
 diwako_unknownwp_local_weapons = [];
 {
 	diwako_unknownwp_local_weapons pushBackUnique (toUpper _x)

@@ -14,10 +14,12 @@ if !(isServer) exitWith {};
 
 // Auto-end mission when there are no tickets
 private _zeus = [getAssignedCuratorUnit (allCurators select 0)];
-
-private _amtOfTickets = [missionNamespace] call BIS_fnc_respawnTickets;
+private _operatives = (call BIS_fnc_listPlayers) - _zeus;
+private _amtOfTickets = 0;
+{
+_amtOfTickets = _amtOfTickets + ([_x, 0] call BIS_fnc_respawnTickets);
+}forEach _operatives;
 if ((_amtOfTickets <= 0)) then {
-	private _operatives = (call BIS_fnc_listPlayers) - _zeus;
 	// If there are no operatives that are alive
 	if ((_operatives findIf { alive _x }) == -1) then {
 		["LOSER", true, 3] remoteExec ["BIS_fnc_endMission", 0, true];
