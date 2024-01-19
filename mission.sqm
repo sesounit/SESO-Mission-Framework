@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=16659;
+		nextID=16670;
 	};
 	class LayerIndexProvider
 	{
-		nextID=204;
+		nextID=213;
 	};
 	class Camera
 	{
-		pos[]={5.9270205,22.240852,-12.912372};
-		dir[]={0.07761991,-0.64971983,0.75635689};
-		up[]={0.066335119,0.76011086,0.64638162};
-		aside[]={0.99489969,1.3178214e-006,-0.10210148};
+		pos[]={4.0832267,17.700373,-9.8852949};
+		dir[]={-0.10210046,-0.49605274,0.86226863};
+		up[]={-0.058329679,0.86829239,0.49261141};
+		aside[]={0.9930625,0,0.11758765};
 	};
 };
 binarizationWanted=0;
@@ -66,7 +66,8 @@ addons[]=
 	"ace_vehicle_damage",
 	"acre_sys_intercom",
 	"A3_Modules_F_Multiplayer",
-	"A3_Modules_F_Curator_Misc"
+	"A3_Modules_F_Curator_Misc",
+	"A3_Modules_F_Intel"
 };
 class AddonsMetaData
 {
@@ -316,7 +317,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=37;
+		items=48;
 		class Item0
 		{
 			dataType="Logic";
@@ -5035,6 +5036,463 @@ class Mission
 			flags=1;
 			id=16658;
 			type="ModuleCoverMap_F";
+		};
+		class Item37
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={38,5,-26};
+			};
+			id=16659;
+			type="ModuleCreateDiaryRecord_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCreateDiaryRecord_F_PresetTitle";
+					expression="_this setVariable ['PresetTitle',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Situation";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCreateDiaryRecord_F_Title";
+					expression="_this setVariable ['Title',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Intel";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCreateDiaryRecord_F_Description";
+					expression="_this setVariable ['Description',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Time: 1945/02/22 0830 " \n "<br/> " \n "Weather: Clear " \n "<br/> " \n "Fog: Clear " \n "<br/><br/> " \n "Enemy TO/E " \n "<br/> " \n "Factions: Germans (Waffen SS) " \n "<br/> " \n "Vehicles/Statics: APCs, Trucks, Heavy Machinegun Statics, AA Gun Statics, AT Gun Statics " \n "<br/> " \n "<br/><br/> " \n "Friendly TO/E " \n "<br/> " \n "Factions: SESO, Allies (SHAEF) " \n "<br/> " \n "Vehicles/Statics: MHQ Matador, Jeeps, Red Fuel Truck " \n "<br/> " \n "Indirect Support: x1 Supply Drop (1 Arsenal) " \n "<br/>";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCreateDiaryRecord_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=3;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCreateDiaryRecord_F_Subject";
+					expression="_this setVariable ['Subject',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item38
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={38,5,-24};
+			};
+			id=16660;
+			type="ModuleCreateDiaryRecord_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCreateDiaryRecord_F_PresetTitle";
+					expression="_this setVariable ['PresetTitle',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Situation";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCreateDiaryRecord_F_Title";
+					expression="_this setVariable ['Title',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Signal";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCreateDiaryRecord_F_Description";
+					expression="_this setVariable ['Description',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="LRR Radio: AN/PRC-152 " \n "<br/> " \n "SRR Radio: None " \n "<br/> " \n "OPSCOM LRR Channel: 1 " \n "<br/> " \n "BRAVO LRR Channel: 1 " \n "<br/> " \n "Green Smoke/Flare: BLUFOR nearby / LZ Marker " \n "<br/> " \n "Red Smoke/Flare: OPFOR nearby / TFP marker " \n "<br/> " \n "Purple Smoke/Flare: Mass casualties received";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCreateDiaryRecord_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=3;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCreateDiaryRecord_F_Subject";
+					expression="_this setVariable ['Subject',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item39
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={38,5,-22};
+			};
+			id=16661;
+			type="ModuleCreateDiaryRecord_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCreateDiaryRecord_F_PresetTitle";
+					expression="_this setVariable ['PresetTitle',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Execution";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCreateDiaryRecord_F_Title";
+					expression="_this setVariable ['Title',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCreateDiaryRecord_F_Description";
+					expression="_this setVariable ['Description',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1. Secure OBJ Leningrad " \n "<br/> " \n "2. Reach OBJ Grouse " \n "<br/> " \n "3. Secure OBJ Grouse " \n "<br/> " \n "4. Plant explosives on the red fuel truck " \n "<br/> " \n "5. Position the red fuel truck on top of the bridge " \n "<br/> " \n "6. Detonate the explosives to destroy the bridge. " \n "<br/> " \n "7. EVAC to FOB Lion";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCreateDiaryRecord_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=3;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCreateDiaryRecord_F_Subject";
+					expression="_this setVariable ['Subject',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item40
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={38,5,-20};
+			};
+			id=16662;
+			type="ModuleCreateDiaryRecord_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCreateDiaryRecord_F_PresetTitle";
+					expression="_this setVariable ['PresetTitle',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Mission";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCreateDiaryRecord_F_Title";
+					expression="_this setVariable ['Title',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCreateDiaryRecord_F_Description";
+					expression="_this setVariable ['Description',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1. Secure OBJ Leningrad " \n "<br/> " \n "2. Secure OBJ Grouse " \n "<br/> " \n "3. Destroy the bridge at OBJ Pegasus";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCreateDiaryRecord_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=3;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCreateDiaryRecord_F_Subject";
+					expression="_this setVariable ['Subject',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item41
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={38,5,-18};
+			};
+			id=16663;
+			type="ModuleCreateDiaryRecord_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCreateDiaryRecord_F_PresetTitle";
+					expression="_this setVariable ['PresetTitle',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Situation";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCreateDiaryRecord_F_Title";
+					expression="_this setVariable ['Title',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCreateDiaryRecord_F_Description";
+					expression="_this setVariable ['Description',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="BLUF: Destroy the bridge at OBJ Pegasus. " \n "<br/><br/> " \n "--- " \n "<br/><br/> " \n "Panzer Barracks, a future home for Bravo squad, has proved useful. According to our intel, most German forces are housed in Base Sud. They receive supply from headquaters in the north due to the railroad. " \n "<br/><br/> " \n "You will need to eliminate this railroad in OBJ Pegasus using the fuel truck you acquired earlier. Wrap it with explosives and set it to blow in OBJ Pegasus. " \n "<br/><br/>";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCreateDiaryRecord_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=3;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleCreateDiaryRecord_F_Subject";
+					expression="_this setVariable ['Subject',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item42
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={40,5,-18};
+			};
+			title="1. Situation";
+			id=16664;
+		};
+		class Item43
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={40,5,-20};
+			};
+			title="2. Mission";
+			id=16665;
+		};
+		class Item44
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={40,5,-22};
+			};
+			title="3. Execution";
+			id=16666;
+		};
+		class Item45
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={40,5,-24};
+			};
+			title="4. Signal";
+			id=16667;
+		};
+		class Item46
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={40,5,-26};
+			};
+			title="5. Intel";
+			id=16668;
+		};
+		class Item47
+		{
+			dataType="Trigger";
+			position[]={36,5,-25};
+			class Attributes
+			{
+				sizeA=0;
+				sizeB=0;
+			};
+			id=16669;
+			type="EmptyDetector";
 		};
 	};
 	class Connections

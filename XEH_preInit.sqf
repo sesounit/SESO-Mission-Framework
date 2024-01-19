@@ -73,7 +73,7 @@
     "SLIDER",
     ["Starting Tickets", "Define respawn tickets at mission start. Set to less than 0 to disable."],
 	["SESO Mission Framework", "Setup"],
-    [-1,100,1,0],
+    [-1,100,2,0],
     true, // _isGlobal
     {  
 		if !(missionNamespace getVariable "SESO_setting_SetupSystemEnable") exitWith {};

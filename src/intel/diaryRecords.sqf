@@ -1,3 +1,4 @@
+/* 2024/18/01 diaryRecords are now legacy as the host can make the briefing in-game
 ////////////////////////////////////////////////////////////////////////////////////////
 // Set Diary
 player setDiarySubjectPicture ["Diary", "a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa"];
@@ -91,3 +92,4 @@ You will need to eliminate this railroad in OBJ Pegasus using the fuel truck you
 <br/><br/>
 "
 ]];
+*/

@@ -26,7 +26,6 @@ private _arsenalList = [];
 // Get arsenal's items and add to ammo & weapon lists
 if (!isNil "_arsenal") then {
 	_arsenalList = (keys ([_arsenal] call ace_arsenal_fnc_getVirtualItems));
-	systemChat (str _arsenalList);
 };
 
 // Add items from nearby units

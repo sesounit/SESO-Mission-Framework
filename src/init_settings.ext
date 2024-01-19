@@ -3,7 +3,7 @@
 #include "missionConversations.hpp"
 #include "sentences.bikb"
 // Custom Loading Texts
-#include "intel\loading_Tips.hpp"
+//#include "intel\loading_Tips.hpp"
 
 // Mission Header
 author="Dildo Sagbag";
