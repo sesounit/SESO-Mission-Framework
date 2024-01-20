@@ -46,10 +46,12 @@ publicVariable "SESO_var_arsenals";
 }forEach SESO_var_arsenals;
 
 // Define Diwako's Unknown Weapon Punish whitelist
+private _first_SESO_var_arsenal = keys ([SESO_var_arsenals select 0] call ace_arsenal_fnc_getVirtualItems);
+systemChat (str first_SESO_var_arsenal);
 diwako_unknownwp_local_weapons = [];
 {
-	diwako_unknownwp_local_weapons pushBackUnique (toUpper _x)
-}forEach (_allPlayerUnitsItems + PLAYER_UNITS_ITEMS);
+    diwako_unknownwp_local_weapons pushBackUnique (toUpper _x);
+}forEach (_allPlayerUnitsItems + PLAYER_UNITS_ITEMS + (flatten _first_SESO_var_arsenal));
 
 publicVariable "diwako_unknownwp_local_weapons";
 
