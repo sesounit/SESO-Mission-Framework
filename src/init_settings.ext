@@ -5,6 +5,7 @@
 // Custom Loading Texts
 //#include "intel\loading_Tips.hpp"
 
+/*
 // Mission Header
 author="Dildo Sagbag";
 briefingName = "SESO Mission Framework";
@@ -12,6 +13,7 @@ onLoadName="SESO Mission Framework";
 onLoadMission= "BLUF: SESO Mission Framework";
 overviewPicture="src\thumbnail.jpg";
 loadScreen="src\thumbnail.jpg";
+*/
 class Header{gameType=Zeus;};
 
 // Mission Settings
