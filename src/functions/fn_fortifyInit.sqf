@@ -32,6 +32,14 @@ params ["_switcherObject"];
 	_case1;
 }] call ace_fortify_fnc_addDeployHandler;
 
+["acex_fortify_objectPlaced", {
+	params ["_unit", "_side", "_objectPlaced"];
+	clearMagazineCargoGlobal _objectPlaced;
+	clearItemCargoGlobal _objectPlaced;
+	clearWeaponCargoGlobal _objectPlaced;
+	clearBackpackCargoGlobal _objectPlaced;
+	}] call CBA_fnc_addEventHandler;
+
 //Add construction noise when building
 // TODO: Add the noise when deploying and continuing fortify!
 //["acex_fortify_onDeployStart", {

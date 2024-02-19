@@ -209,7 +209,8 @@ class ACEX_Fortify_Presets {
 		objects[] = {
 			{"ACE_Wheel",50},
 			{"ACE_Track",50},
-			{"Land_CanisterFuel_F",100}
+			{"Land_CanisterFuel_F",100},
+			{"Box_NATO_Support_F",50}
 		};
 	};
 
@@ -236,6 +237,7 @@ class ACEX_Fortify_Presets {
 			{"ACE_Wheel",50, "SESO_logistics_preset"},
 			{"ACE_Track",50, "SESO_logistics_preset"},
 			{"Land_CanisterFuel_F",100, "SESO_logistics_preset"},
+			{"Box_NATO_Support_F",50, "SESO_logistics_preset"},
 			{"Land_Plank_01_4m_F",10, "SESO_climbing_preset"},
 			{"Land_Plank_01_8m_F",20, "SESO_climbing_preset"}
 		};
