@@ -1,7 +1,3 @@
-#include "conv\cfg\defines.hpp"
-#include "conv\cfg\dialogs.hpp"
-#include "missionConversations.hpp"
-#include "sentences.bikb"
 // Custom Loading Texts
 //#include "intel\loading_Tips.hpp"
 
@@ -85,45 +81,16 @@ class CfgDebriefingSections {
 	#endif
 };
 
-// HALs Store
-#define HALs_DEF_INIT
-	#include "HALs\Addons\main\config.hpp"
-#undef HALs_DEF_INIT
-
 class CfgFunctions
 {
-	// Conversation System
-	#include "conv\cfg\functions.hpp"
 	// SESO Mission Scripts
 	#include "functions\cfgFunctions.hpp"
-	// HALs Store
-	#define HALs_DEF_FUNCTIONS
-		#include "HALs\Addons\main\config.hpp"
-	#undef HALs_DEF_FUNCTIONS
 };
 
-class IMW_EmptyDisplay
-{
-   idd = 5000;
-   duration = 1e+009; //Time in seconds the resource will stay visible for. 1e+1000 = 1 * 10^1000 = never disappear
-   onLoad = "uiNamespace setVariable ['IMW_EmptyDisplay', _this select 0];";
-   movingenable = false;
-
-   class Controls
-   {
-   };
-};
 
 class CfgSounds
 {
-	sounds[] =  {radioclick,WhistleShort,WhistleLong};
-
-	class radioclick
-	{
-		name = "radioclick";
-		sound[] = {src\snd\radioclick.ogg, 1, 1.0};
-		titles[] = {0, ""};
-	};
+	sounds[] =  {WhistleShort,WhistleLong};
 
 	class WhistleShort {
         name = "";

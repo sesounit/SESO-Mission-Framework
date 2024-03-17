@@ -20,8 +20,6 @@
 
 #define ENGINEER_CHECK params ["_target", "_player"]; if ([_player] call ace_common_fnc_isEngineer) then {true} else {false}
 
-params ["_switcherObject"];
-
 // Make sure player is an Engineer to use Fortify tool
 [{
 	params ["_unit", "_object", "_cost"];
@@ -32,6 +30,7 @@ params ["_switcherObject"];
 	_case1;
 }] call ace_fortify_fnc_addDeployHandler;
 
+// Remove items from inventory when placed, useful for extra ammo boxes
 ["acex_fortify_objectPlaced", {
 	params ["_unit", "_side", "_objectPlaced"];
 	clearMagazineCargoGlobal _objectPlaced;

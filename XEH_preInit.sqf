@@ -104,149 +104,6 @@
 		};
     }
 ] call CBA_fnc_addSetting;
-/*
-////////////////////////////////////////////////////////////////
-// Custom Map Locations
-////////////////////////////////////////////////////////////////
-[
-    "SESO_setting_CustomMapLocationsNameVillageColorSelect",
-    "LIST",
-    ["Marker Color for Village Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		5
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsNameCityColor",
-    "LIST",
-    ["Marker Color for City Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		10
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsNameCityCapitalColor",
-    "LIST",
-    ["Marker Color for City Capital Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		3
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsNameLocalColor",
-    "LIST",
-    ["Marker Color for Local Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		7
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsHillColor",
-    "LIST",
-    ["Marker Color for Hill Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		1
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsVegetationFirColor",
-    "LIST",
-    ["Marker Color for Temperate Forest Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		8
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsVegetationPalmColor",
-    "LIST",
-    ["Marker Color for Tropical Forest Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		6
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsNameMarineColor",
-    "LIST",
-    ["Marker Color for Marine Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		9
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsRockAreaColor",
-    "LIST",
-    ["Marker Color for Rock Location", "Set the color of marker to represent this location. MUST BE UNIQUE COLOR."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    [
-		["Default","ColorBlack","ColorGrey","ColorRed","ColorBrown","ColorOrange","ColorYellow","ColorKhaki","ColorGreen","ColorBlue","ColorPink","ColorWhite"],
-		["Default","Black","Grey","Red","Brown","Orange","Yellow","Khaki","Green","Blue","Pink","White"],
-		2
-	],
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_CustomMapLocationsEntityLayerName",
-    "EDITBOX",
-    ["Custom Map Locations Entity Layer Name", "CASE SENSITIVE name of the entity layer or folder that defines custom map locations. If not found, no map locations will be defined. Only objects in this layer will be affected."],
-	["SESO Mission Framework", "Custom Map Locations"],
-    "Map Locations",
-    true, // _isGlobal
-    {
-		params ["_value"];
-
-        // Server only
-		if !(isServer) exitWith {};
-		// Check if layer is exists
-		if (count (getMissionLayerEntities _value) <= 0) exitWith {};
-		private _entityLayerName = (getMissionLayerEntities _value) select 1;
-		// Check if layer has entities
-		if ((count _entityLayerName) == 0) exitWith {};
-
-		[_value] call SESO_fnc_defineMapLocationsServer;
-    }
-] call CBA_fnc_addSetting;
-*/
 ////////////////////////////////////////////////////////////////
 // ZBE AI Caching
 ////////////////////////////////////////////////////////////////
@@ -313,21 +170,56 @@
     ["Enable ACE3 Advanced Fortify", "Check to enable additional options and blueprints for the Fortify Tool and Engineers. Uncheck to leave it unchanged."],
 	["SESO Mission Framework", "ACE3 Advanced Fortify"],
     true,
-    true // _isGlobal
-] call CBA_fnc_addSetting;
-
-[
-    "SESO_setting_FortifyAdvancedSwitcher",
-    "EDITBOX",
-    ["Set Object to be Blueprint Switcher", "Variable name of object that would be used by engineers to switch blueprints. Traditionally, a respawn vehicle but can be anything."],
-	["SESO Mission Framework", "ACE3 Advanced Fortify"],
-    "logi_truck",
     true, // _isGlobal
     {
         params ["_value"];
-		if !(missionNamespace getVariable "SESO_setting_FortifyAdvancedEnable") exitWith {};
+		if !(_value) exitWith {};
         // Global
-        [missionNamespace getVariable _value] call SESO_fnc_fortifyInit;
+        [] call SESO_fnc_fortifyInit;
+    }
+] call CBA_fnc_addSetting;
+
+////////////////////////////////////////////////////////////////
+// Animation Multipliers
+////////////////////////////////////////////////////////////////
+
+[
+    "SESO_setting_SwimSpeedMultiplier",
+    "EDITBOX",
+    ["Set Swimming Speed Multiplier", "Set multiplier for swimming faster. Set to 1 for vanilla speed."],
+	["SESO Mission Framework", "Animation Multiplers"],
+    "2.5",
+    true, // _isGlobal
+    {
+        params ["_value"];
+		_value = parseNumber _value;
+		//if (_value <= 1) exitWith {};
+		// Player only
+		if !(hasInterface) exitWith {};
+		private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_RoleFlagMultiplier",
+    "EDITBOX",
+    ["Set Operative Role Flags Penalty Multiplier", "Set multiplier for moving slower when holding weapons outside of your role. Set to 1 for vanilla speed."],
+	["SESO Mission Framework", "Animation Multiplers"],
+    "0.65",
+    true, // _isGlobal
+    {
+        params ["_value"];
+		_value = parseNumber _value;
+		if (_value == 1) exitWith {};
+		// Player only
+		if !(hasInterface) exitWith {};
+        player setVariable ["SESO_totalSpeed", 1];
+
+        [_value] spawn {
+			waitUntil {cba_missiontime > 0};
+			params ["_value"];
+			[] call SESO_fnc_roleFlags;
+		};
     }
 ] call CBA_fnc_addSetting;
 
@@ -650,21 +542,19 @@
     }
 ] call CBA_fnc_addSetting;
 
-// BUG: Does not actually change swimming speed
 [
-    "SESO_setting_SwimSpeedMultiplier",
-    "EDITBOX",
-    ["Set Swimming Speed Multiplier", "Set multiplier for swimming faster. Set to 1 for vanilla speed."],
+    "SESO_setting_CutGrassEnable",
+    "CHECKBOX",
+    ["Enable Cutting Grass", "Check to allow all players to cut grass under ACE3 Self-Interact >> Equipment. Uncheck to remove it."],
 	["SESO Mission Framework"],
-    "2.5",
+    true,
     true, // _isGlobal
     {
         params ["_value"];
-		_value = parseNumber _value;
-		if (_value <= 1) exitWith {};
+		if !(_value) exitWith {};
 		// Player only
 		if !(hasInterface) exitWith {};
-		private _SWIM_FASTER_ID = [] call SESO_fnc_swimFaster;
+		[] call SESO_fnc_createCutGrassAction;
     }
 ] call CBA_fnc_addSetting;
 
@@ -700,5 +590,20 @@
             [] call SESO_fnc_snow;
         };
 		
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_ShowServerFps",
+    "CHECKBOX",
+    ["Show Server FPS", "Gets the server FPS and all the current units and updates a marker at the bottom left of the map."],
+	["SESO Mission Framework"],
+    true,
+    true, // _isGlobal
+    {
+		params ["_value"];
+        // Server only
+		if !(isServer) exitWith {};
+		[] spawn SESO_fnc_serverFpsLoop;
     }
 ] call CBA_fnc_addSetting;

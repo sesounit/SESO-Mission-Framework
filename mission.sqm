@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=16763;
+		nextID=16767;
 	};
 	class LayerIndexProvider
 	{
-		nextID=231;
+		nextID=255;
 	};
 	class Camera
 	{
-		pos[]={-3.8701043,26.747774,-13.090069};
-		dir[]={0.61085504,-0.79174101,0.0033402224};
-		up[]={0.79173172,0.61085236,0.0043293396};
-		aside[]={0.0054676868,2.4252222e-007,-0.99998701};
+		pos[]={6.5243382,23.171492,17.963522};
+		dir[]={-0.067261837,-0.49489555,-0.86635262};
+		up[]={-0.038307156,0.86895055,-0.49341339};
+		aside[]={-0.99700445,5.2939868e-008,0.077403888};
 	};
 };
 binarizationWanted=0;
@@ -68,13 +68,14 @@ addons[]=
 	"ace_arsenal",
 	"A3_Weapons_F_Orange",
 	"A3_Weapons_F_Pistols_Pistol_Heavy_01",
-	"A3_Characters_F_Exp"
+	"A3_Characters_F_Exp",
+	"A3_Structures_F_Civ_InfoBoards"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=29;
+		items=30;
 		class Item0
 		{
 			className="ace_fortify";
@@ -278,6 +279,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item29
+		{
+			className="A3_Structures_F";
+			name="Arma 3 - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -348,7 +356,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=47;
+		items=49;
 		class Item0
 		{
 			dataType="Logic";
@@ -2598,7 +2606,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={-5,5.8924227,13};
-						angles[]={0,1.5707963,-0};
+						angles[]={0,1.5707963,0};
 					};
 					side="Empty";
 					flags=4;
@@ -2631,7 +2639,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={-5,5.8924227,11};
-						angles[]={0,1.5707963,-0};
+						angles[]={0,1.5707963,0};
 					};
 					side="Empty";
 					flags=4;
@@ -2664,7 +2672,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={-5,5.8924227,9};
-						angles[]={0,1.5707963,-0};
+						angles[]={0,1.5707963,0};
 					};
 					side="Empty";
 					flags=4;
@@ -2697,7 +2705,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={-5,5.8924227,7};
-						angles[]={0,1.5707963,-0};
+						angles[]={0,1.5707963,0};
 					};
 					side="Empty";
 					flags=4;
@@ -5426,7 +5434,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						description="Medic";
+						description="Medic@Bravo 3";
 						isPlayable=1;
 					};
 					id=16745;
@@ -5434,6 +5442,32 @@ class Mission
 					class CustomAttributes
 					{
 						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.05;
+								};
+							};
+						};
+						class Attribute2
 						{
 							property="ENH_disableAI_all";
 							expression="if (_value) then {[_this, 'all'] remoteExec ['disableAI', _this]}";
@@ -5446,7 +5480,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=1;
+						nAttributes=3;
 					};
 				};
 				class Item1
@@ -5489,6 +5523,23 @@ class Mission
 			{
 			};
 			id=16746;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Bravo 3";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item43
 		{
@@ -5617,6 +5668,34 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item47
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16,5.9688811,8};
+				angles[]={0,1.5707964,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="this addAction " \n "[ " \n " ""Train into MG Role"", " \n " { " \n "  params [""_target"", ""_caller"", ""_actionId"", ""_arguments""]; " \n "  _caller setVariable [""SESO_MG_role"", true]; " \n " }, " \n " nil, " \n " 1.5, " \n " true, " \n " false, " \n " """", " \n " ""!(player getVariable ['SESO_MG_role', false]);"", " \n " 5, " \n " false, " \n " """", " \n " """" " \n "]; " \n " " \n "this addAction " \n "[ " \n " ""Train into AA Role"", " \n " { " \n "  params [""_target"", ""_caller"", ""_actionId"", ""_arguments""]; " \n "  _caller setVariable [""SESO_AA_role"", true]; " \n " }, " \n " nil, " \n " 1.5, " \n " true, " \n " false, " \n " """", " \n " ""!(player getVariable ['SESO_AA_role', false]);"", " \n " 5, " \n " false, " \n " """", " \n " """" " \n "]; " \n " " \n "this addAction " \n "[ " \n " ""Train into AT Role"", " \n " { " \n "  params [""_target"", ""_caller"", ""_actionId"", ""_arguments""]; " \n "  _caller setVariable [""SESO_AT_role"", true]; " \n " }, " \n " nil, " \n " 1.5, " \n " true, " \n " false, " \n " """", " \n " ""!(player getVariable ['SESO_AT_role', false]);"", " \n " 5, " \n " false, " \n " """", " \n " """" " \n "]; " \n " " \n "this addAction " \n "[ " \n " ""Remove all roles"", " \n " { " \n "  params [""_target"", ""_caller"", ""_actionId"", ""_arguments""]; " \n "  _caller setVariable [""SESO_MG_role"", false]; " \n "  _caller setVariable [""SESO_AT_role"", false]; " \n "  _caller setVariable [""SESO_AA_role"", false]; " \n " }, " \n " nil, " \n " 1.5, " \n " true, " \n " false, " \n " """", " \n " ""true"", " \n " 5, " \n " false, " \n " """", " \n " """" " \n "]; " \n "";
+			};
+			id=16763;
+			type="Land_MapBoard_F";
+		};
+		class Item48
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={16,5,8};
+			};
+			title="Role Board";
+			description="Usually used for edge cases when someone needs a role. Use this board to allow any operative to have MG, AT, and/or AA role and avoid movement penalties.";
+			id=16766;
 		};
 	};
 	class Connections
