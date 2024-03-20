@@ -30,7 +30,7 @@ respawn = "BASE";
 respawnDelay = 5;
 respawnOnStart = -1;
 respawnVehicleDelay = 3;
-respawnTemplates[] = {"MenuPosition", "Tickets", "Group"};
+respawnTemplates[] = {"MenuPosition", "Spectator", "Tickets", "Group"};
 respawnTemplatesVirtual[] = {};
 
 // Garbage Collection
@@ -46,9 +46,9 @@ class CfgNotifications {
 	class MedicalNotif
 	{
 		title = "MEDICAL TREATMENT";
-		iconPicture = "z\ace\addons\medical_gui\ui\cross.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		iconPicture = "z\ace\addons\medical_gui\ui\cross.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "%1 is treating your %2";
 		duration = 8;
 	};
@@ -56,9 +56,9 @@ class CfgNotifications {
 	class SetupOverNotif
 	{
 		title = "SETUP IS OVER";
-		iconPicture = "a3\ui_f\data\igui\rsctitles\mpprogress\timer_ca.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		iconPicture = "a3\ui_f\data\igui\rsctitles\mpprogress\timer_ca.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "Setup timer has run out. Mission starts now.";
 		duration = 10;
 	};
@@ -66,9 +66,9 @@ class CfgNotifications {
 	class SetupCanceledNotif
 	{
 		title = "SETUP IS CANCELED";
-		iconPicture = "a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_exit_cross_ca.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa"
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa"
+		iconPicture = "a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_exit_cross_ca.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
+		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "Setup timer has been cancelled manually by %1";
 		duration = 10;
 	};
@@ -163,7 +163,7 @@ class ACEX_Fortify_Presets {
     };
 
 	class SESO_offensive_preset {
-		displayName = "Offensive Structures"
+		displayName = "Offensive Structures";
 		objects[] = {
 			{"I_G_HMG_02_high_F",125},
 			{"CUP_B_SPG9_CDF", 200},
@@ -172,7 +172,7 @@ class ACEX_Fortify_Presets {
 	};
 
 	class SESO_logistics_preset {
-		displayName = "Logistics Equipment"
+		displayName = "Logistics Equipment";
 		objects[] = {
 			{"ACE_Wheel",50},
 			{"ACE_Track",50},
@@ -182,7 +182,7 @@ class ACEX_Fortify_Presets {
 	};
 
 	class SESO_climbing_preset {
-		displayName = "Climbing Equipment"
+		displayName = "Climbing Equipment";
 		objects[] = {
 			{"Land_Plank_01_4m_F",10},
 			{"Land_Plank_01_8m_F",20}
@@ -190,7 +190,7 @@ class ACEX_Fortify_Presets {
 	};
 
 	class SESO_green_combo_preset {
-		displayName = "All Equipment and Structures (Green)"
+		displayName = "All Equipment and Structures (Green)";
 		objects[] = {
 			{"Land_HBarrier_01_tower_green_F",50, "SESO_defensive_preset"},
 			{"Land_BagBunker_01_large_green_F",100, "SESO_defensive_preset"},
@@ -201,10 +201,10 @@ class ACEX_Fortify_Presets {
 			{"I_G_HMG_02_high_F",125, "SESO_offensive_preset"},
 			{"CUP_B_SPG9_CDF", 200, "SESO_offensive_preset"},
 			{"LIB_leFH18_AT",250, "SESO_offensive_preset"},
-			{"ACE_Wheel",50, "SESO_logistics_preset"},
-			{"ACE_Track",50, "SESO_logistics_preset"},
-			{"Land_CanisterFuel_F",100, "SESO_logistics_preset"},
-			{"Box_NATO_Support_F",50, "SESO_logistics_preset"},
+			{"ACE_Wheel",15, "SESO_logistics_preset"},
+			{"ACE_Track",15, "SESO_logistics_preset"},
+			{"Land_CanisterFuel_F",20, "SESO_logistics_preset"},
+			{"Box_NATO_Support_F",5, "SESO_logistics_preset"},
 			{"Land_Plank_01_4m_F",10, "SESO_climbing_preset"},
 			{"Land_Plank_01_8m_F",20, "SESO_climbing_preset"}
 		};

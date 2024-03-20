@@ -16,14 +16,25 @@
 private _zeus = [getAssignedCuratorUnit (allCurators select 0)];
 private _operatives = (call BIS_fnc_listPlayers) - _zeus;
 private _amtOfTickets = 0;
+
+if (([player, 0] call BIS_fnc_respawnTickets) <= 1) then {
+	[player] spawn {
+		sleep 5;
+		["close"] call BIS_fnc_showRespawnMenu;
+		[] call ace_spectator_fnc_setSpectator;
+	};
+};
+
+
+/*
 {
 _amtOfTickets = _amtOfTickets + ([_x, 0] call BIS_fnc_respawnTickets);
-systemChat "Counting tickets, currently" + (str _amtOfTickets); 
 }forEach _operatives;
-systemChat "Tickets remaining:" + (str _amtOfTickets);
+
 if ((_amtOfTickets <= 0)) then {
 	// If there are no operatives that are alive
 	if ((_operatives findIf { alive _x }) == -1) then {
 		["LOSER", true, 3] remoteExec ["BIS_fnc_endMission", 0, true];
 	};
 };
+*/

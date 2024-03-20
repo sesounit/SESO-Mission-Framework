@@ -1,38 +1,48 @@
 class SESO
 {
 	tag = "SESO";
-	class Common
+
+	class Misc
 	{
-		file = "src\functions";
-		class immersiveSpawn {};
+		file = "src\functions\misc";
+		class areaOfFire {};
+		class artySupport {};
+		class canTalk {};
 		class dressPlayer {};
 		class dressFaction {};
 		class introCamera {};
 		class introText {};
-		class canTalk {};
-		class initArsenalServer {};
-		class initArsenalPlayer {};
 		class teleportToVehicle {};
 		class generateAmmo {};
 		class setupTimer {};
 		class hideMapObjects {};
-		class areaOfFire {};
-		class defineMapLocationsServer {};
-		class defineMapLocationsPlayer {};
 		class detectWarCrime {};
-		class aceMedicalNotifier {};
 		class autoEndMission {};
 		class simpleConvoy {};
 		class replaceBadFace {};
 		class getPlayerUnitsItems {};
 		class hideGlobalChatWhenUncon {};
+		class snow {};
+	};
+
+	class Map
+	{
+		file = "src\functions\map";
+		class defineMapLocationsServer {};
+		class defineMapLocationsPlayer {};
+		class serverFpsLoop {};
+	}
+
+	class ACE
+	{
+		file = "src\functions\ace";
 		class fortifyInit {};
 		class whistleInit {};
-		class artySupport {};
-		class snow {};
-		class serverFpsLoop {};
+		class initArsenalServer {};
+		class initArsenalPlayer {};
 		class cutGrassAction {};
 		class createCutGrassAction {};
+		class aceMedicalNotifier {};
 	};
 
 	class Anim
@@ -41,5 +51,5 @@ class SESO
 		class swimFaster {};
 		class roleFlags {};
 		class checkRoles {};
-	}
+	};
 };

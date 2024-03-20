@@ -21,7 +21,7 @@ if ((AA_CHECK) and !(player getVariable ["SESO_AA_role", false])) then {
 };
 
 _unit setVariable ["SESO_penaltyStack", _penaltyStack];
-systemChat ("Penalty Count is x" + str (_penaltyStack));
+//systemChat ("Penalty Count is x" + str (_penaltyStack));
 
 private _totalSpeed = _totalSpeed * (_speedMultiplier ^ _penaltyStack);
 _unit setVariable ["SESO_totalSpeed", _totalSpeed];

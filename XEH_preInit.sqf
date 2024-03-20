@@ -200,6 +200,7 @@
     }
 ] call CBA_fnc_addSetting;
 
+
 [
     "SESO_setting_RoleFlagMultiplier",
     "EDITBOX",

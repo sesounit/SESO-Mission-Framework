@@ -13,13 +13,14 @@
 SESO_var_cutGrassAnimDone = false;
 
 private _animEH = player addEventHandler ["AnimDone", {
-	if (_this select 1 == "AinvPknlMstpSlayWrflDnon_medic") then {
+	if (_this select 1 == "AinvPknlMstpSnonWnonDr_medic2") then {
 		SESO_var_cutGrassAnimDone = true;
 	};
 }];
 
-// [player, "AinvPknlMstpSlayWrflDnon_medic"] remoteExec ["playMove"];
-player playMove "AinvPknlMstpSlayWrflDnon_medic";
+player playMove "AinvPknlMstpSnonWnonDr_medic2";
+
+
 
 
 [{SESO_var_cutGrassAnimDone}, {
