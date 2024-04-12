@@ -29,31 +29,6 @@ private _ARSENAL_DISPLAY_ID = ["ace_arsenal_displayClosed", {
 	systemChat "Loadout saved for respawn";
 }] call CBA_fnc_addEventHandler;
 
-{
-	// addAction to add currently held weapon to arsenal
-	_x addAction
-		[
-			"Add Currently Held Weapon to Arsenal",	// title
-			{
-				params ["_target"]; // script
-				[_target,[currentWeapon player, currentMagazine player], true] call ace_arsenal_fnc_addVirtualItems;
-				systemChat (([configFile >> "CfgWeapons" >> currentWeapon player] call BIS_fnc_displayName) + " and " + ([configFile >> "CfgMagazines" >> currentMagazine player] call BIS_fnc_displayName) + " added to arsenal.");
-			},
-			nil,		// arguments
-			1000,		// priority
-			true,		// showWindow
-			false,		// hideOnUse
-			"",			// shortcut
-			"currentWeapon player != ''", 	// condition
-			5,			// radius
-			false,		// unconscious
-			"",			// selection
-			""			// memoryPoint
-		];
-
-}forEach SESO_var_arsenals;
-
-
 // Add starting loadout as a default loadout
 private _loadoutName = roleDescription player;
 
