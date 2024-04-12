@@ -7,8 +7,8 @@ author="Dildo Sagbag";
 briefingName = "SESO Mission Framework";
 onLoadName="SESO Mission Framework";
 onLoadMission= "BLUF: SESO Mission Framework";
-overviewPicture="src\thumbnail.jpg";
-loadScreen="src\thumbnail.jpg";
+overviewPicture="thumbnail.jpg";
+loadScreen="thumbnail.jpg";
 */
 class Header{gameType=Zeus;};
 
@@ -47,8 +47,6 @@ class CfgNotifications {
 	{
 		title = "MEDICAL TREATMENT";
 		iconPicture = "z\ace\addons\medical_gui\ui\cross.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "%1 is treating your %2";
 		duration = 8;
 	};
@@ -57,8 +55,6 @@ class CfgNotifications {
 	{
 		title = "SETUP IS OVER";
 		iconPicture = "a3\ui_f\data\igui\rsctitles\mpprogress\timer_ca.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "Setup timer has run out. Mission starts now.";
 		duration = 10;
 	};
@@ -67,8 +63,6 @@ class CfgNotifications {
 	{
 		title = "SETUP IS CANCELED";
 		iconPicture = "a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_exit_cross_ca.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_medic_ca.paa";
-		//iconPicture = "a3\characters_f\data\ui\icon_med_ca.paa";
 		description = "Setup timer has been cancelled manually by %1";
 		duration = 10;
 	};
@@ -192,21 +186,21 @@ class ACEX_Fortify_Presets {
 	class SESO_green_combo_preset {
 		displayName = "All Equipment and Structures (Green)";
 		objects[] = {
-			{"Land_HBarrier_01_tower_green_F",45, "SESO_defensive_preset"},
-			{"Land_BagBunker_01_large_green_F",55, "SESO_defensive_preset"},
-			{"Land_BagBunker_01_small_green_F",35, "SESO_defensive_preset"},
-			{"Land_CzechHedgehog_01_old_F",3, "SESO_defensive_preset"},
-			{"Land_BagFence_01_round_green_F",5, "SESO_defensive_preset"},
-			{"Land_BagFence_01_long_green_F",5, "SESO_defensive_preset"},
-			{"I_G_HMG_02_high_F",45, "SESO_offensive_preset"},
-			{"CUP_B_SPG9_CDF", 45, "SESO_offensive_preset"},
-			{"LIB_leFH18_AT",45, "SESO_offensive_preset"},
-			{"ACE_Wheel",60, "SESO_logistics_preset"},
-			{"ACE_Track",60, "SESO_logistics_preset"},
-			{"Land_CanisterFuel_F",60, "SESO_logistics_preset"},
-			{"Box_NATO_Support_F",2, "SESO_logistics_preset"},
-			{"Land_Plank_01_4m_F",5, "SESO_climbing_preset"},
-			{"Land_Plank_01_8m_F",10, "SESO_climbing_preset"}
+			{"Land_HBarrier_01_tower_green_F",10, "SESO_defensive_preset"},
+			{"Land_BagBunker_01_large_green_F",10, "SESO_defensive_preset"},
+			{"Land_BagBunker_01_small_green_F",5, "SESO_defensive_preset"},
+			{"Land_CzechHedgehog_01_old_F",1, "SESO_defensive_preset"},
+			{"Land_BagFence_01_round_green_F",2, "SESO_defensive_preset"},
+			{"Land_BagFence_01_long_green_F",2, "SESO_defensive_preset"},
+			{"I_G_HMG_02_high_F",3, "SESO_offensive_preset"},
+			{"CUP_B_SPG9_CDF", 4, "SESO_offensive_preset"},
+			{"LIB_leFH18_AT",4, "SESO_offensive_preset"},
+			{"ACE_Wheel",10, "SESO_logistics_preset"},
+			{"ACE_Track",10, "SESO_logistics_preset"},
+			{"Land_CanisterFuel_F",10, "SESO_logistics_preset"},
+			{"Box_NATO_Support_F",1, "SESO_logistics_preset"},
+			{"Land_Plank_01_4m_F",2, "SESO_climbing_preset"},
+			{"Land_Plank_01_8m_F",4, "SESO_climbing_preset"}
 		};
 	};
 };
