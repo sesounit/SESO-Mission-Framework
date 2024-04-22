@@ -12,11 +12,15 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
+<<<<<<< Updated upstream
 		nextID=28293;
 	};
 	class MarkerIDProvider
 	{
 		nextID=54;
+=======
+		nextID=17411;
+>>>>>>> Stashed changes
 	};
 	class LayerIndexProvider
 	{
@@ -24,10 +28,17 @@ class EditorData
 	};
 	class Camera
 	{
+<<<<<<< Updated upstream
 		pos[]={9559.1201,46.068756,3395.1887};
 		dir[]={-0.46588615,-0.59797752,0.65220666};
 		up[]={-0.34757963,0.80151272,0.486586};
 		aside[]={0.81371957,2.1071173e-008,0.58125848};
+=======
+		pos[]={-8.5553665,32.902096,-42.934566};
+		dir[]={0.00032596104,-0.5780164,0.8160972};
+		up[]={0.00023025274,0.81601274,0.57803863};
+		aside[]={1.0000637,1.1826196e-006,-0.00040196907};
+>>>>>>> Stashed changes
 	};
 };
 binarizationWanted=0;
@@ -1853,7 +1864,11 @@ class Mission
 	};
 	class Entities
 	{
+<<<<<<< Updated upstream
 		items=423;
+=======
+		items=61;
+>>>>>>> Stashed changes
 		class Item0
 		{
 			dataType="Layer";
@@ -65646,6 +65661,42 @@ class Mission
 			id=28292;
 			type="Land_Scaffolding_F";
 			atlOffset=0.41700935;
+		};
+		class Item58
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-12,5,-6};
+			};
+			name="hc_0";
+			isPlayable=1;
+			id=17406;
+			type="HeadlessClient_F";
+		};
+		class Item59
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-12,5,-8};
+			};
+			name="hc_1";
+			isPlayable=1;
+			id=17409;
+			type="HeadlessClient_F";
+		};
+		class Item60
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-12,5,-10};
+			};
+			name="hc_2";
+			isPlayable=1;
+			id=17410;
+			type="HeadlessClient_F";
 		};
 	};
 	class Connections
