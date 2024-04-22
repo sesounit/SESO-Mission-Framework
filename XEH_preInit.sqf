@@ -127,7 +127,8 @@
     "Cache Exceptions",
     true, // _isGlobal
     {  
-		if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
+		// Might as well do this regardless of the above setting
+		//if !(missionNamespace getVariable "SESO_setting_CacheEnable") exitWith {};
         params ["_value"];
         // Server only
         if !(isServer) exitWith {};
@@ -284,11 +285,13 @@
         // Player only
 		if !(hasInterface) exitWith {};
         player enableStamina false;
+        player setCustomAimCoef 0.2;
         private _STAMINA_DISABLER_ID = player addEventHandler ["Respawn", {
             params ["_unit","_corpse"];
             if !(_unit == player) exitWith {};
 
             _unit enableStamina false;
+            _unit setCustomAimCoef 0.2;
         }];
     }
 ] call CBA_fnc_addSetting;
@@ -605,5 +608,20 @@
         // Server only
 		if !(isServer) exitWith {};
 		[] spawn SESO_fnc_serverFpsLoop;
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_EnableDiscordRichPresence",
+    "CHECKBOX",
+    ["Enable SESO Discord Rich Presence", "Enable custom SESO Discord Rich Presence. Enable it for shameless promo!"],
+	["SESO Mission Framework"],
+    true,
+    true, // _isGlobal
+    {
+		params ["_value"];
+        // Player only
+		if !(hasInterface) exitWith {};
+		[] call SESO_fnc_initPlayerRichPresence;
     }
 ] call CBA_fnc_addSetting;

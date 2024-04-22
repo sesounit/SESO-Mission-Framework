@@ -42,6 +42,9 @@ class Extended_PreInit_EventHandlers {
 	SESOMission = call compile preprocessFileLineNumbers "XEH_preInit.sqf";
 };
 
+// Custom SESO Discord Rich Presence
+#include "functions\richPresence\SESO_CfgDiscordRichPresence.hpp"
+
 class CfgNotifications {
 	class MedicalNotif
 	{
@@ -186,21 +189,26 @@ class ACEX_Fortify_Presets {
 	class SESO_green_combo_preset {
 		displayName = "All Equipment and Structures (Green)";
 		objects[] = {
-			{"Land_HBarrier_01_tower_green_F",10, "SESO_defensive_preset"},
-			{"Land_BagBunker_01_large_green_F",10, "SESO_defensive_preset"},
-			{"Land_BagBunker_01_small_green_F",5, "SESO_defensive_preset"},
+			{"Land_HBarrier_01_tower_green_F",5, "SESO_defensive_preset"},
+			{"Land_BagBunker_01_large_green_F",5, "SESO_defensive_preset"},
+			{"Land_BagBunker_01_small_green_F",2, "SESO_defensive_preset"},
 			{"Land_CzechHedgehog_01_old_F",1, "SESO_defensive_preset"},
-			{"Land_BagFence_01_round_green_F",2, "SESO_defensive_preset"},
-			{"Land_BagFence_01_long_green_F",2, "SESO_defensive_preset"},
-			{"I_G_HMG_02_high_F",3, "SESO_offensive_preset"},
-			{"CUP_B_SPG9_CDF", 4, "SESO_offensive_preset"},
-			{"LIB_leFH18_AT",4, "SESO_offensive_preset"},
-			{"ACE_Wheel",10, "SESO_logistics_preset"},
-			{"ACE_Track",10, "SESO_logistics_preset"},
-			{"Land_CanisterFuel_F",10, "SESO_logistics_preset"},
+			{"Land_BagFence_01_round_green_F",1, "SESO_defensive_preset"},
+			{"Land_BagFence_01_long_green_F",1, "SESO_defensive_preset"},
+			{"CUP_B_CUP_SearchLight_static_US",1, "SESO_offensive_preset"},
+			{"I_G_HMG_02_high_F",1, "SESO_offensive_preset"},
+			{"CUP_B_Igla_AA_pod_CDF", 2, "SESO_offensive_preset"},
+			{"CUP_B_SPG9_CDF", 3, "SESO_offensive_preset"},
+			{"CFP_B_USARMY_TOW_TriPod_US", 4, "SESO_offensive_preset"},
+			{"cwr3_b_fia_mk19", 5, "SESO_offensive_preset"},
+			{"CUP_O_D30_AT_RUS_M_Desert",6, "SESO_offensive_preset"},
+			{"LIB_leFH18_AT",3, "SESO_offensive_preset"},
+			{"ACE_Wheel",5, "SESO_logistics_preset"},
+			{"ACE_Track",5, "SESO_logistics_preset"},
+			{"Land_CanisterFuel_F",5, "SESO_logistics_preset"},
 			{"Box_NATO_Support_F",1, "SESO_logistics_preset"},
-			{"Land_Plank_01_4m_F",2, "SESO_climbing_preset"},
-			{"Land_Plank_01_8m_F",4, "SESO_climbing_preset"}
+			{"Land_Plank_01_4m_F",1, "SESO_climbing_preset"},
+			{"Land_Plank_01_8m_F",2, "SESO_climbing_preset"}
 		};
 	};
 };

@@ -52,4 +52,11 @@ class SESO
 		class roleFlags {};
 		class checkRoles {};
 	};
+
+	class RichPresence
+	{
+		file = "src\functions\richPresence";
+		class initPlayerRichPresence {};
+		class updatePlayerRPTicketCount {};
+	}
 };
