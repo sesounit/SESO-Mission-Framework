@@ -5,6 +5,9 @@
 	Description: Loads all this stuff needed for the
 ===================================================================
 */
+
+#include "..\script_component.hpp"
+
 diag_log "IMW - Waiting for player to be loaded";
 diag_log "IMW - Starting immersed weather init";
 iwm_allowBreathing = true;

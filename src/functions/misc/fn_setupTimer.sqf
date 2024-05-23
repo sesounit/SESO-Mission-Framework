@@ -18,6 +18,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 params ["_endTime", ["_ticketsCoef", -1], ["_timeMultiplier", 1], ["_mode","on_load"]];
 
 //SESO_isCanceled = false;

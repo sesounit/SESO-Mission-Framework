@@ -10,6 +10,8 @@
 		None
 */
 
+#include "..\script_component.hpp"
+
 SESO_var_serverFPSMarker = createMarker ["SESO_var_serverFPSMarker", [0, -500]];
 
 while {true} do {

@@ -14,6 +14,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 private _playersLoadouts = [];
 {
 	// Collect all units loadouts into a single list

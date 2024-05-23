@@ -1,3 +1,6 @@
+
+#include "..\script_component.hpp"
+
 #define DEFINE_PRESET(PRESET)\
 {\
 	[{\

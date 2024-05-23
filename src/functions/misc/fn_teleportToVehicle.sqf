@@ -23,6 +23,9 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
+
 params ["_target", "_caller", ["_targetDistance", 10], ["_teleportAllPlayers", false], ["_teleportAllZeus", false]];
 
 if ((_teleportAllPlayers == true) or (_teleportAllZeus == true)) exitWith {

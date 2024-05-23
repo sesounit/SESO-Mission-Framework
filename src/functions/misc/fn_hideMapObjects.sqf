@@ -19,6 +19,9 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
+
 #define MAP_TYPES_BUILDING			["BUILDING","HOUSE","CHURCH","CHAPEL","FUELSTATION","HOSPITAL","RUIN","BUNKER"]
 #define MAP_TYPES_VEGETATION		["TREE","SMALL TREE","BUSH"]
 #define MAP_TYPES_WALL				["WALL","FENCE"]

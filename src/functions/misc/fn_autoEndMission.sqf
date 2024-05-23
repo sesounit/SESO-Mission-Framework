@@ -10,6 +10,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 //if (isServer) exitWith {};
 
 // Auto-end mission when there are no tickets

@@ -1,10 +1,8 @@
+
 // Source
 // https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#create-a-custom-setting-for-mission-or-mod
 
-#define PLAYER_UNITS_ITEMS ["LIB_Sten_Mk5","LIB_32rnd_9x19_t","LIB_Colt_M1911","LIB_7Rnd_45ACP","U_LIB_GBR_NCO_ParaCamo02v02pSgtM1Tho","JMSSA_ita_VAmmoSMG","ACE_MapTools","LIB_US_M18","LIB_US_M18_Green","LIB_US_M18_Red","B_LIB_UK_HSack_Blanco","ACE_elasticBandage","ACE_packingBandage","ACE_EntrenchingTool","ACE_epinephrine","ACE_morphine","ACE_tourniquet","ACE_splint","ACE_Flashlight_MX991","H_LIB_US_HelmetKaki0F_WOWhiteWO","ItemMap","ItemRadioAcreFlagged","LIB_GER_ItemCompass_deg","LIB_GER_ItemWatch","LIB_M1_Garand","LIB_8Rnd_762x63_t","LIB_FLARE_PISTOL","LIB_1Rnd_flare_white","U_LIB_GBR_EnlMan_ParaCamo03v01pPvtSmLE","JMSSA_ita_VAmmoBelt","LIB_US_Mk_2","LIB_1Rnd_flare_green","B_LIB_SOV_RA_Radio","ACRE_PRC152","H_LIB_US_HelmetKaki0C_NxNx","LIB_8Rnd_762x63","U_LIB_GBR_EnlMan_ParaCamo02v03pPvtMedSmLE","B_LIB_SOV_RA_MedicalBag_Empty","ACE_bloodIV","ACE_bloodIV_500","ACE_adenosine","ACE_surgicalKit","H_LIB_US_Helmetos_MedCRRB1234","LIB_M1919A6","LIB_50Rnd_762x63","JMSSA_ita_VAmmoStrip","LIB_M1A1_Bazooka","LIB_1Rnd_60mm_M6","JMSSA_ita_VCrewStrip","B_LIB_US_RocketBag_Empty","LIB_32Rnd_9x19_Sten"]
-#define FORGOTTEN_CUP_ITEMS ["ACRE_PRC152","ACRE_PRC343","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_SpottingScope","ACE_SpraypaintBlack","ACE_SpraypaintBlue","ACE_SpraypaintGreen","ACE_SpraypaintRed","ACE_SpraypaintWhite","ACE_SpraypaintYellow","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_Chemlight_HiGreen","B_IR_Grenade","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellPurple","HandGrenade","DemoCharge_Remote_Mag","ACE_rope12","Old_Camera_Color_HUD","Old_Camera_Color","Old_Camera_HUD","Old_Camera","Nikon_DSLR_HUD","Nikon_DSLR","immersion_pops_poppack","murshun_cigs_lighter","murshun_cigs_matches","murshun_cigs_cigpack","immersion_cigs_cigar0","murshun_cigs_cig0","immersion_pops_pop0","immersion_cigs_cigar0_nv","murshun_cigs_cig0_nv","ACE_VMM3", "ACE_painkillers", "acex_intelitems_notepad", "WBK_HeadLampItem", "ACE_Sandbag_empty"]
-#define FORGOTTEN_WW2_ITEMS ["ACRE_PRC152","ACE_elasticBandage","ACE_packingBandage","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_CableTie","ACE_bodyBag","ACE_DefusalKit","ACE_EntrenchingTool","ACE_epinephrine","ACE_Fortify","ACE_Flashlight_MX991","ACE_LIB_LadungPM","ACE_LIB_FireCord","ACE_MapTools","ACE_morphine","ACE_personalAidKit","ACE_SpareBarrel_Item","ACE_splint","ACE_surgicalKit","ACE_tourniquet","ACE_wirecutter","ACE_HandFlare_Green","SmokeShellGreen","SmokeShellRed","SmokeShellYellow","SmokeShellPurple","HandGrenade","ACE_rope12","Old_Camera_Color_HUD","Old_Camera_Color","Old_Camera_HUD","Old_Camera","immersion_pops_poppack","murshun_cigs_lighter","murshun_cigs_matches","murshun_cigs_cigpack","immersion_cigs_cigar0","murshun_cigs_cig0","immersion_pops_pop0","immersion_cigs_cigar0_nv","murshun_cigs_cig0_nv","ACE_VMM3","ACE_painkillers", "acex_intelitems_notepad", "WBK_HeadLampItem", "ACE_Sandbag_empty"]
-
+#include "script_component.hpp"
 
 ////////////////////////////////////////////////////////////////
 // ACE3 Auto Arsenal
@@ -104,6 +102,7 @@
 		};
     }
 ] call CBA_fnc_addSetting;
+
 ////////////////////////////////////////////////////////////////
 // ZBE AI Caching
 ////////////////////////////////////////////////////////////////
@@ -623,5 +622,107 @@
         // Player only
 		if !(hasInterface) exitWith {};
 		[] call SESO_fnc_initPlayerRichPresence;
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_EnableSprayPaintTags",
+    "CHECKBOX",
+    ["Enable ACE Spray Paint Map Tags", "Enable creating a marker on the map each time someone tags something with spray paint."],
+	["SESO Mission Framework"],
+    true,
+    true, // _isGlobal
+    {
+		params ["_value"];
+        if !(_value) exitWith {};
+        // Server only
+		if !(isServer) exitWith {};
+        markerNumber = 0;
+        ["ace_tagCreated", SESO_fnc_mapTag] call CBA_fnc_addEventHandler;
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_EnableACEMedicalReplacements",
+    "CHECKBOX",
+    ["Enable Custom ACE Medical Replacements", "Enable replacing First Aid Kits and Med Kits with custom ACE items defined by the Medical SME."],
+	["SESO Mission Framework"],
+    true,
+    true, // _isGlobal
+    {
+		params ["_value"];[
+            "SESO_setting_EnableUnknownWeaponDegrade",
+            "CHECKBOX",
+            ["Enable Unknown Weapon Degredation", "Enable replacing First Aid Kits and Med Kits with custom ACE items defined by the Medical SME."],
+            ["SESO Mission Framework"],
+            true,
+            true, // _isGlobal
+            {
+                params ["_value"];
+                if !(_value) exitWith {};
+                // Global
+                [] call SESO_fnc_weaponDegrade;
+            }
+        ] call CBA_fnc_addSetting;
+        if !(_value) exitWith {};
+        // Server only
+		if !(isServer) exitWith {};
+        ace_medical_treatment_convertItems = 2;
+        [] call SESO_fnc_itemReplace;
+    }
+] call CBA_fnc_addSetting;
+
+////////////////////////////////////////////////////////////////
+// Unknown Weapon Degrade
+////////////////////////////////////////////////////////////////
+
+[
+    "SESO_setting_EnableUnknownWeaponDegrade",
+    "CHECKBOX",
+    ["Enable Unknown Weapon Degredation", "Enable degrading weapons unknown to the operatives."],
+	["SESO Mission Framework", "Unknown Weapon Degrade"],
+    true,
+    true, // _isGlobal
+    {
+		params ["_value"];
+        if !(_value) exitWith {};
+        // Global
+        [] call SESO_fnc_weaponDegrade;
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_DispersionValue",
+    "SLIDER",
+    ["Set Dispersion Value", "Set dispersion of unknown weapons."],
+	["SESO Mission Framework", "Unknown Weapon Degrade"],
+    [1, 1000, 165, 0],
+    true, // _isGlobal
+    {
+        if !(missionNamespace getVariable "SESO_setting_EnableUnknownWeaponDegrade") exitWith {};
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_JamValue",
+    "SLIDER",
+    ["Set Jam Chance Percentage", "Set jam chance percentage of unknown weapons."],
+	["SESO Mission Framework", "Unknown Weapon Degrade"],
+    [1, 100, 3, 0],
+    true, // _isGlobal
+    {
+        if !(missionNamespace getVariable "SESO_setting_EnableUnknownWeaponDegrade") exitWith {};
+    }
+] call CBA_fnc_addSetting;
+
+[
+    "SESO_setting_PropagationTimer",
+    "SLIDER",
+    ["Set Propagation Wait Timer", "Weapons held by operatives at the beginning of their connection is automatically known. Set the timer for how long the system should wait until their held weapons are known to them."],
+	["SESO Mission Framework", "Unknown Weapon Degrade"],
+    [1, 100, 15, 0],
+    true, // _isGlobal
+    {
+        if !(missionNamespace getVariable "SESO_setting_EnableUnknownWeaponDegrade") exitWith {};
     }
 ] call CBA_fnc_addSetting;

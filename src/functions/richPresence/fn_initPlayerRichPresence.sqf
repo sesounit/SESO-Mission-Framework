@@ -9,6 +9,8 @@
 		None
 */
 
+#include "..\script_component.hpp"
+
 private _cleanPlayerRole = "";
 if (isMultiplayer) then
 {

@@ -15,6 +15,9 @@
 *
 * Public: Yes
 */
+
+#include "..\script_component.hpp"
+
 #define PLAYER_UNITS_ITEMS []
 params ["_ammoBox", "_arsenal", ["_radiusOfCheck",500], ["_clearBox",true]];
 

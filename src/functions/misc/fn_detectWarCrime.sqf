@@ -13,6 +13,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 addMissionEventHandler ["EntityKilled", {
 	params ["_killed", "_killer", "_instigator"];
 	private _zeus = [getAssignedCuratorUnit (allCurators select 0)];

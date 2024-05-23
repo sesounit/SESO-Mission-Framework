@@ -1,3 +1,6 @@
+
+#include "..\script_component.hpp"
+
 private _SWIM_FASTER_ID = player addEventHandler ["AnimChanged", {
 	params ["_unit", "_anim"];
 	private _speedMultiplier = parseNumber (missionNamespace getVariable "SESO_setting_SwimSpeedMultiplier");

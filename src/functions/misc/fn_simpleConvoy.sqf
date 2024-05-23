@@ -22,6 +22,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 params ["_convoyGroup",["_convoySpeed",50],["_convoySeparation",50],["_pushThrough", false]];
 
 if !(isServer) exitWith {};

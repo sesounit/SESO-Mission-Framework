@@ -1,3 +1,6 @@
+
+#include "..\script_component.hpp"
+
 if !(hasInterface) exitWith {};
 
 private _GLOBAL_DISABLER_ID = ["ace_unconscious", {

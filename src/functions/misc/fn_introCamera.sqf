@@ -24,6 +24,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 params ["_cinematicCameraStart","_cinematicCameraEnd", "_cinematicTarget", ["_music",""], ["_cinematicText",""], ["_cinematicFont",""], ["_endMission", false]];
 
 //Hide camera helpers

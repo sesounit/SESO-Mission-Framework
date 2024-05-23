@@ -20,6 +20,9 @@
 *
 * Public: Yes
 */
+
+#include "..\script_component.hpp"
+
 params ["_campaignName","_font", ["_titleColor", ""], ["_subtitleColor", ""]];
 
 // Intro Text

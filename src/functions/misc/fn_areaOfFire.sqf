@@ -18,6 +18,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 params ["_centerPos",["_timeout",25],["_effectSize",150],["_particleLifeTime",5]];
 
 // Fire

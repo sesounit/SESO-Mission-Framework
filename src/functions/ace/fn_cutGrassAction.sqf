@@ -10,6 +10,8 @@
 		None
 */
 
+#include "..\script_component.hpp"
+
 SESO_var_cutGrassAnimDone = false;
 
 private _animEH = player addEventHandler ["AnimDone", {

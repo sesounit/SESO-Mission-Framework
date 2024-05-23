@@ -16,6 +16,8 @@
 * Public: Yes
 */
 
+#include "..\script_component.hpp"
+
 if !(hasInterface) exitWith {};
 
 private _MEDICAL_NOTIFIER_ID = ["ace_treatmentStarted", {

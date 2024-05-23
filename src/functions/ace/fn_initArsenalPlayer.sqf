@@ -14,8 +14,7 @@
 * Public: Yes
 */
 
-#define ARSENAL_MEDICAL ["ACE_elasticBandage","ACE_packingBandage","ACE_bodyBag","ACE_epinephrine","ACE_tourniquet","ACE_bloodIV","ACE_adenosine","ACE_morphine","ACE_bloodIV_500","ACE_bloodIV_250","ACE_splint","ACE_surgicalKit","ACE_personalAidKit"]
-#define ARSENAL_TOOLS ["ACE_LIB_LadungPM","LIB_ToolKit","ACE_LIB_FireCord","ACE_Clacker","ToolKit","ACE_wirecutter","ACE_Fortify","ACE_DefusalKit","ACE_Kestrel4500","ACE_rope12","ACE_rope15","ACE_rope18","ACE_rope27","ACE_rope3","ACE_rope36","ACE_rope6"]
+#include "..\script_component.hpp"
 
 if !(hasInterface) exitWith {};
 

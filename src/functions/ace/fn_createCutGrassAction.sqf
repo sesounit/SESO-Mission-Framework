@@ -10,6 +10,8 @@
 		None
 */
 
+#include "..\script_component.hpp"
+
 private _cutGrassAction = [
 	"cut-grass",
 	"Cut grass",
