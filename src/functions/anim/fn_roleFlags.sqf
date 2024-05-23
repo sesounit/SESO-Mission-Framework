@@ -1,15 +1,14 @@
-#define AT_CHECK (getText(configFile >> "CfgWeapons" >> (secondaryWeapon (player)) >> "UIPicture") == "\a3\weapons_f\data\ui\icon_at_ca.paa")
-#define AA_CHECK (getText(configFile >> "CfgWeapons" >> (secondaryWeapon (player)) >> "UIPicture") == "\a3\weapons_f\data\ui\icon_aa_ca.paa")
-#define MG_CHECK (getText(configFile >> "CfgWeapons" >> (primaryWeapon (player)) >> "UIPicture") == "\a3\weapons_f\data\ui\icon_mg_ca.paa")
+
+#include "..\script_component.hpp"
 
 if !(hasInterface) exitWith {};
 
 // Set current speed variable to be compatible with fn_swimFaster
 //player setVariable ["SESO_totalSpeed", 1];
 
-// Set AT Role
-if (AT_CHECK) then {
-    player setVariable ["SESO_AT_role", true];
+// Set MAT Role
+if (MAT_CHECK && !LAT_CHECK) then {
+    player setVariable ["SESO_MAT_role", true];
 };
 
 // Set AA Role
