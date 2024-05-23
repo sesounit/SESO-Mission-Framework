@@ -13,6 +13,9 @@
 *
 * Public: Yes
 */
+
+#include "..\script_component.hpp"
+
 #define PLAYER_UNITS_ITEMS []
 params ["_entityLayerName",["_allPlayerUnitsItems",[]]];
 
@@ -42,6 +45,27 @@ publicVariable "SESO_var_arsenals";
 		} else {
 			[_selectedArsenal,_allPlayerUnitsItems, true] call ace_arsenal_fnc_initBox;
 		};
+
+		[
+			_selectedArsenal,
+			[
+			"<img size='2' image='src\img\icon_arsenal_ca.paa' />Arsenal",	// title
+			{
+				params ["_target", "_caller", "_actionId", "_arguments"]; // script
+				[_target, _caller] call ace_arsenal_fnc_openBox;
+			},
+			nil,		// arguments
+			9999,		// priority
+			true,		// showWindow
+			false,		// hideOnUse
+			"",			// shortcut
+			"true",		// condition
+			4,			// radius
+			false,		// unconscious
+			"",			// selection
+			""			// memoryPoint
+			]
+		] remoteExec ["addAction", 0, _selectedArsenal];
 	};
 }forEach SESO_var_arsenals;
 
@@ -53,6 +77,6 @@ diwako_unknownwp_local_weapons = [];
     diwako_unknownwp_local_weapons pushBackUnique (toUpper _x);
 }forEach (_allPlayerUnitsItems + PLAYER_UNITS_ITEMS + (flatten _first_SESO_var_arsenal));
 
-publicVariable "diwako_unknownwp_local_weapons";
+[diwako_unknownwp_local_weapons] remoteExec ["SESO_fnc_addAllowedWeapons", 2, false];
 
 [] remoteExecCall ["SESO_fnc_initArsenalPlayer",0,true];
