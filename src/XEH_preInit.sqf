@@ -650,20 +650,7 @@
     true,
     true, // _isGlobal
     {
-		params ["_value"];[
-            "SESO_setting_EnableUnknownWeaponDegrade",
-            "CHECKBOX",
-            ["Enable Unknown Weapon Degredation", "Enable replacing First Aid Kits and Med Kits with custom ACE items defined by the Medical SME."],
-            ["SESO Mission Framework"],
-            true,
-            true, // _isGlobal
-            {
-                params ["_value"];
-                if !(_value) exitWith {};
-                // Global
-                [] call SESO_fnc_weaponDegrade;
-            }
-        ] call CBA_fnc_addSetting;
+		params ["_value"];
         if !(_value) exitWith {};
         // Server only
 		if !(isServer) exitWith {};
@@ -679,7 +666,7 @@
 [
     "SESO_setting_EnableUnknownWeaponDegrade",
     "CHECKBOX",
-    ["Enable Unknown Weapon Degredation", "Enable degrading weapons unknown to the operatives."],
+    ["Enable Unknown Weapon Degradation", "Enable degrading weapons unknown to the operatives."],
 	["SESO Mission Framework", "Unknown Weapon Degrade"],
     true,
     true, // _isGlobal
@@ -694,7 +681,7 @@
 [
     "SESO_setting_DispersionValue",
     "SLIDER",
-    ["Set Dispersion Value", "Set dispersion of unknown weapons."],
+    ["Set Dispersion Value", "Set dispersion of unknown weapons. This represents how inaccurate the weapons are."],
 	["SESO Mission Framework", "Unknown Weapon Degrade"],
     [1, 1000, 165, 0],
     true, // _isGlobal
@@ -706,7 +693,7 @@
 [
     "SESO_setting_JamValue",
     "SLIDER",
-    ["Set Jam Chance Percentage", "Set jam chance percentage of unknown weapons."],
+    ["Set Jam Chance Percentage", "Set jam chance percentage of unknown weapons. This represents the chance an unknown weapon would jam."],
 	["SESO Mission Framework", "Unknown Weapon Degrade"],
     [1, 100, 3, 0],
     true, // _isGlobal
