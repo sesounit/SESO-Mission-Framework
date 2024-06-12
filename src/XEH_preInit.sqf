@@ -668,7 +668,7 @@
     "CHECKBOX",
     ["Enable Unknown Weapon Degradation", "Enable degrading weapons unknown to the operatives."],
 	["SESO Mission Framework", "Unknown Weapon Degrade"],
-    true,
+    false,
     true, // _isGlobal
     {
 		params ["_value"];
