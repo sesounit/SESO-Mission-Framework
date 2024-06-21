@@ -22,6 +22,7 @@ class CfgFunctions
 			class hideGlobalChatWhenUncon;
 			class snow;
 			class makeAgent;
+			class teleportToPoint;
 		};
 
 		class map
